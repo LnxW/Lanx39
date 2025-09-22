@@ -1,0 +1,216 @@
+<!--
+File: index.html
+Brand: Lanx
+Note: Fixed menu click issues, added motion effects, and proper menu toggle with exit.
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lanx — Demo</title>
+  <style>
+    @font-face { font-family: 'Inter'; src: local('Inter'), local('Inter-Regular'); font-weight: 400; }
+    :root{--bg:#0b0b0b;--muted:#9aa0a6;--accent:#e12b2b;--glass: rgba(255,255,255,0.04);--maxw:1200px}
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial}
+    body{background:var(--bg);color:#fff;line-height:1.2;scroll-behavior:smooth}
+
+    header{position:fixed;top:0;left:0;z-index:50;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;width:100%;background:#0c0c0c}
+    .logo{font-weight:900;letter-spacing:0.08em;cursor:pointer;line-height:1.2;text-align:left}
+
+    main{padding-top:110px;max-width:var(--maxw);margin:auto}
+    section{margin:36px auto;padding:28px;opacity:0;transform:translateY(30px);transition:opacity 0.8s ease, transform 0.8s ease}
+    section.visible{opacity:1;transform:translateY(0)}
+
+    /* Menu lightbox */
+    .menu-lightbox{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity 0.4s;z-index:100;pointer-events:none}
+    .menu-lightbox.active{opacity:1;visibility:visible;pointer-events:auto}
+    .menu-lightbox a{color:#fff;font-size:36px;margin:12px 0;text-decoration:none;opacity:0;transform:translateY(-20px);transition:all 0.4s ease}
+    .menu-lightbox a.show{opacity:1;transform:translateY(0)}
+
+    /* Hero */
+    .hero{min-height:75vh;display:flex;align-items:center;justify-content:space-between;padding:48px;position:relative;border-radius:16px;overflow:hidden}
+    .hero-left{padding:12px;z-index:3;position:relative;max-width:600px}
+    .hero h1{font-size:64px;margin:0;line-height:0.9;letter-spacing:0.02em;transition:opacity 1s ease-in-out, transform 1s ease-in-out}
+    .hero .subtitle{margin-top:12px;color:var(--muted);font-weight:500;transition:opacity 1s ease-in-out, transform 1s ease-in-out}
+    .hero .cta{margin-top:22px}
+    .btn{background:transparent;border:2px solid var(--accent);padding:10px 14px;font-weight:700;border-radius:8px;color:var(--accent);cursor:pointer}
+    .hero-bg{position:absolute;top:0;left:0;right:0;bottom:0;z-index:1;background-size:cover;background-position:center;border-radius:16px;opacity:1;transition:opacity 1s ease-in-out}
+    .incoming-box{position:relative;z-index:4;background:var(--glass);padding:20px;border-radius:12px;min-width:200px;color:#fff;align-self:flex-end;margin-right:20px}
+
+    /* Collection */
+    .collection-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:24px}
+    .collection-box{position:relative;cursor:pointer;border-radius:12px;overflow:hidden;transition:transform 0.3s}
+    .collection-box:hover{transform:scale(1.02)}
+    .collection-box img{width:100%;display:block;height:300px;object-fit:cover}
+    .overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(180deg,transparent,rgba(0,0,0,0.7));color:#fff;padding:12px;font-weight:700;font-size:16px;transition:background 0.3s}
+
+    /* Partners */
+    .partners{font-weight:bold;font-size:20px;position:relative;overflow:hidden;padding:12px 0;}
+    .partners-text{display:flex;justify-content:space-between;align-items:center;}
+    .partners span{font-weight:300;font-size:16px;}
+    .sponsor-box{position:relative;white-space:nowrap;overflow:hidden;height:40px;margin-top:10px;}
+    .sponsor-box span{position:absolute;left:-100%;animation:moveSponsor 15s linear infinite;}
+    @keyframes moveSponsor{0%{left:-100%}100%{left:100%}}
+
+    /* Lightbox */
+    .lightbox{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);display:flex;align-items:center;justify-content:center;visibility:hidden;opacity:0;transition:opacity 0.3s;flex-direction:column}
+    .lightbox.active{visibility:visible;opacity:1}
+    .lightbox img{max-width:90%;max-height:80%;border-radius:12px;margin-top:20px}
+    .lightbox .close, .lightbox .exit-btn{position:absolute;top:20px;font-size:28px;color:#fff;cursor:pointer;font-weight:900;background:rgba(0,0,0,0.7);padding:10px 14px;border-radius:6px}
+    .lightbox .close{right:30px}
+    .lightbox .exit-btn{left:30px;font-size:20px}
+    .lightbox .nav-btn{position:absolute;top:50%;transform:translateY(-50%);font-size:48px;color:#fff;cursor:pointer;font-weight:900;user-select:none}
+    .lightbox .prev{left:30px}
+    .lightbox .next{right:30px}
+
+    @media(max-width:900px){.hero{flex-direction:column;align-items:flex-start;padding:24px}.hero h1{font-size:44px}.incoming-box{margin-top:20px;margin-right:0;align-self:flex-start}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo" id="logo">LANX</div>
+    <div class="logo" id="menu-trigger">MENU</div>
+  </header>
+
+  <div class="menu-lightbox" id="menu-lightbox">
+    <a href="#home">home</a>
+    <a href="#about">about</a>
+    <a href="#shop">shop</a>
+    <a href="#partners">partners</a>
+    <a href="#contact">contact</a>
+  </div>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-left">
+        <h1 id="hero-title">LANX<br>FOCUS ON STYLE</h1>
+        <div class="subtitle" id="hero-subtitle">Second or never.</div>
+        <div class="cta"><button class="btn" onclick="location.href='#shop'">shop collection</button></div>
+      </div>
+      <div class="hero-bg" id="hero-bg"></div>
+      <div class="incoming-box">
+        <h3>Incoming Product</h3>
+        <p>Preview of our next drop.</p>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <h2>About Lanx</h2>
+      <p>LANX is a modern lifestyle and performance apparel brand designed for those who live life in motion. Blending sport functionality with streetwear aesthetics, our collection delivers ultimate comfort for daily wear while embracing the energy, speed, and dynamism of an active lifestyle. Every piece is crafted to move with you, whether you're chasing personal bests, navigating the city, or expressing your individual style, making LANX the perfect fusion of performance, style, and effortless wearability. Join the movement and share your journey with #LANX39.</p>
+    </section>
+
+    <section class="shop" id="shop">
+      <h2>Shop Collection</h2>
+      <div class="collection-grid" id="collection-grid">
+        <div class="collection-box" data-images='["images/motogp1.jpg","images/motogp2.jpg"]'>
+          <img src="images/motogp1.jpg" alt="Sept 25 Drop">
+          <div class="overlay">Sept 25 Drop</div>
+        </div>
+        <div class="collection-box" data-images='["images/motogp3.jpg","images/motogp4.jpg"]'>
+          <img src="images/motogp3.jpg" alt="Oct Drop">
+          <div class="overlay">Oct Drop</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="partners" id="partners">
+      <div class="partners-text">OUR PARTNER <span>looking forward</span></div>
+      <div class="sponsor-box"><span>BrandA • BrandB • BrandC • BrandD</span></div>
+    </section>
+
+    <section class="contact" id="contact">
+      <h2>Contact</h2>
+      <p>Email: info@lanx.com</p>
+      <p>Instagram: @lanx_official</p>
+    </section>
+  </main>
+
+  <div class="lightbox" id="lightbox">
+    <span class="exit-btn" id="lb-exit">Exit</span>
+    <span class="close" id="lb-close">×</span>
+    <span class="nav-btn prev" id="lb-prev">‹</span>
+    <span class="nav-btn next" id="lb-next">›</span>
+    <img id="lb-img" src="" alt="">
+  </div>
+
+  <script>
+    const logo=document.getElementById('menu-trigger');
+    const menuLb=document.getElementById('menu-lightbox');
+    const menuLinks=menuLb.querySelectorAll('a');
+
+    let menuOpen=false;
+    logo.addEventListener('click',()=>{
+      menuOpen=!menuOpen;
+      if(menuOpen){
+        menuLb.classList.add('active');
+        menuLinks.forEach((link,i)=>{ setTimeout(()=>link.classList.add('show'), i*100); });
+      }else{
+        menuLb.classList.remove('active');
+        menuLinks.forEach(l=>l.classList.remove('show'));
+      }
+    });
+
+    menuLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        target.scrollIntoView({behavior:'smooth'});
+        menuLb.classList.remove('active');
+        menuLinks.forEach(l=>l.classList.remove('show'));
+        menuOpen=false;
+      });
+    });
+
+    document.addEventListener('keydown', e => {
+      if(e.key==='Escape'){ menuLb.classList.remove('active'); menuLinks.forEach(l=>l.classList.remove('show')); menuOpen=false; }
+    });
+
+    const sections = document.querySelectorAll('main section');
+    const observer = new IntersectionObserver(entries=>{ entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('visible'); } }); }, {threshold:0.2});
+    sections.forEach(section=>observer.observe(section));
+
+    const heroBg=document.getElementById('hero-bg');
+    const heroTitle=document.getElementById('hero-title');
+    const heroSubtitle=document.getElementById('hero-subtitle');
+    const slides=[{img:'images/motogp1.jpg',title:'LANX',subtitle:'Focus on Style'},{img:'images/motogp2.jpg',title:'I SEE RED',subtitle:'Bold Statement'},{img:'images/motogp3.jpg',title:'RISING STAR',subtitle:'Next Level'}];
+    let current=0;
+    function changeSlide(){
+      heroBg.style.opacity=0; heroTitle.style.opacity=0; heroTitle.style.transform='translateY(20px)'; heroSubtitle.style.opacity=0; heroSubtitle.style.transform='translateY(20px)';
+      setTimeout(()=>{
+        heroBg.style.backgroundImage=`url('${slides[current].img}')`;
+        heroTitle.textContent=slides[current].title;
+        heroSubtitle.textContent=slides[current].subtitle;
+        heroBg.style.opacity=1; heroTitle.style.opacity=1; heroTitle.style.transform='translateY(0)'; heroSubtitle.style.opacity=1; heroSubtitle.style.transform='translateY(0)';
+        current=(current+1)%slides.length;
+      },700);
+    }
+    changeSlide();
+    setInterval(changeSlide,4000);
+
+    const lightbox=document.getElementById('lightbox');
+    const lbImg=document.getElementById('lb-img');
+    const lbClose=document.getElementById('lb-close');
+    const lbExit=document.getElementById('lb-exit');
+    const lbPrev=document.getElementById('lb-prev');
+    const lbNext=document.getElementById('lb-next');
+    let lbCurrentImages=[];
+    let lbIndex=0;
+    function updateLightbox(){ lbImg.src=lbCurrentImages[lbIndex]; }
+    document.querySelectorAll('.collection-box').forEach(box=>{
+      box.addEventListener('click',()=>{
+        lbCurrentImages=JSON.parse(box.getAttribute('data-images'));
+        lbIndex=0;
+        updateLightbox();
+        lightbox.classList.add('active');
+      });
+    });
+    lbClose.addEventListener('click',()=>{ lightbox.classList.remove('active'); lbImg.src=''; });
+    lbExit.addEventListener('click',()=>{ lightbox.classList.remove('active'); lbImg.src=''; });
+    lbPrev.addEventListener('click',()=>{ lbIndex=(lbIndex-1+lbCurrentImages.length)%lbCurrentImages.length; updateLightbox(); });
+    lbNext.addEventListener('click',()=>{ lbIndex=(lbIndex+1)%lbCurrentImages.length; updateLightbox(); });
+  </script>
+</body>
+</html>
