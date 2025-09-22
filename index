@@ -1,0 +1,88 @@
+<!--
+File: index.html
+Brand: Lanx
+Original code before any GitHub restructuring or folder changes.
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lanx — Demo</title>
+  <style>
+    /* original CSS as before */
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo" id="logo">LANX</div>
+    <div class="logo" id="menu-trigger">MENU</div>
+  </header>
+
+  <div class="menu-lightbox" id="menu-lightbox">
+    <a href="#home">home</a>
+    <a href="#about">about</a>
+    <a href="#shop">shop</a>
+    <a href="#partners">partners</a>
+    <a href="#contact">contact</a>
+  </div>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-left">
+        <h1 id="hero-title">LANX<br>FOCUS ON STYLE</h1>
+        <div class="subtitle" id="hero-subtitle">Second or never.</div>
+        <div class="cta"><button class="btn" onclick="location.href='#shop'">shop collection</button></div>
+      </div>
+      <div class="hero-bg" id="hero-bg"></div>
+      <div class="incoming-box">
+        <h3>Incoming Product</h3>
+        <p>Preview of our next drop.</p>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <h2>About Lanx</h2>
+      <p>LANX is a modern lifestyle and performance apparel brand designed for those who live life in motion. Blending sport functionality with streetwear aesthetics, our collection delivers ultimate comfort for daily wear while embracing the energy, speed, and dynamism of an active lifestyle. Every piece is crafted to move with you, whether you're chasing personal bests, navigating the city, or expressing your individual style, making LANX the perfect fusion of performance, style, and effortless wearability. Join the movement and share your journey with #LANX39.</p>
+    </section>
+
+    <section class="shop" id="shop">
+      <h2>Shop Collection</h2>
+      <div class="collection-grid" id="collection-grid">
+        <div class="collection-box" data-images='["images/motogp1.jpg","images/motogp2.jpg"]'>
+          <img src="images/motogp1.jpg" alt="Sept 25 Drop">
+          <div class="overlay">Sept 25 Drop</div>
+        </div>
+        <div class="collection-box" data-images='["images/motogp3.jpg","images/motogp4.jpg"]'>
+          <img src="images/motogp3.jpg" alt="Oct Drop">
+          <div class="overlay">Oct Drop</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="partners" id="partners">
+      <div class="partners-text">OUR PARTNER <span>looking forward</span></div>
+      <div class="sponsor-box"><span>BrandA • BrandB • BrandC • BrandD</span></div>
+    </section>
+
+    <section class="contact" id="contact">
+      <h2>Contact</h2>
+      <p>Email: info@lanx.com</p>
+      <p>Instagram: @lanx_official</p>
+    </section>
+  </main>
+
+  <div class="lightbox" id="lightbox">
+    <span class="exit-btn" id="lb-exit">Exit</span>
+    <span class="close" id="lb-close">×</span>
+    <span class="nav-btn prev" id="lb-prev">‹</span>
+    <span class="nav-btn next" id="lb-next">›</span>
+    <img id="lb-img" src="" alt="">
+  </div>
+
+  <script>
+    /* original JS as before */
+  </script>
+</body>
+</html>
