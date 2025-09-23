@@ -114,18 +114,19 @@ h2 {font-size:2em; margin-bottom:20px;}
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 4rem;
+  font-size: clamp(1.8rem, 5vw, 3rem); /* auto ikut screen */
   font-weight: 700;
   color: white;
   text-align: center;
-  text-shadow: 2px 2px 20px rgba(0,0,0,0.8); /* shadow 20% lebih pekat */
+  text-shadow: 2px 2px 15px rgba(0,0,0,0.8); /* shadow balance */
+  line-height: 1.2;
+  padding: 0 15px;
 }
 
-/* Mobile */
-@media (max-width: 768px) {
+/* Extra tweak untuk mobile */
+@media (max-width: 480px) {
   .hero-text {
-    font-size: 2rem;
-    padding: 0 10px;
     top: 45%;
+    font-size: 1.6rem;
   }
 }
