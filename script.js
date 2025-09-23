@@ -1,28 +1,22 @@
 // HERO SLIDES
-const heroSlides = [
-  { img: "image/hero1.jpg", text: "Second or never." },
-  { img: "image/hero2.jpg", text: "I see red." },
-  { img: "image/hero3.jpg", text: "Rising star." }
-];
+let currentSlide = 0;
+const slides = document.querySelectorAll(".hero img");
 
-let heroIndex = 0;
-const heroBg = document.getElementById("hero-bg");
-const heroCaption = document.getElementById("hero-caption");
-
-function showHero() {
-  heroBg.style.backgroundImage = `url('${heroSlides[heroIndex].img}')`;
-  heroCaption.textContent = heroSlides[heroIndex].text;
-
-  // fade effect
-  heroBg.style.opacity = 0;
-  setTimeout(() => { heroBg.style.opacity = 1; }, 100);
-
-  heroIndex = (heroIndex + 1) % heroSlides.length;
+function showSlide(n) {
+  slides.forEach((slide, i) => {
+    slide.classList.remove("active");
+    if (i === n) slide.classList.add("active");
+  });
 }
-showHero();
-setInterval(showHero, 4000);
 
-// MENU TOGGLE
+setInterval(() => {
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide(currentSlide);
+}, 4000);
+
+showSlide(currentSlide);
+
+// MENU
 const menuTrigger = document.getElementById("menu-trigger");
 const menuLightbox = document.getElementById("menu-lightbox");
 
@@ -32,7 +26,6 @@ menuTrigger.addEventListener("click", () => {
 
 // SHOP PREVIEW
 const shopPreview = document.getElementById("shop-preview");
-
 function openShopPreview() {
   shopPreview.classList.add("active");
 }
