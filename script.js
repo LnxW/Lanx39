@@ -27,6 +27,7 @@ menuToggle.addEventListener("click", () => {
   navOverlay.classList.toggle("active");
 });
 
+
 // SHOP LINK (buat visible bila klik menu)
 const shopLink = document.getElementById("shop-link");
 const shopSection = document.getElementById("shop");
