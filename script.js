@@ -1,67 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lanx</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
+// Fade-in sections
+const sections=document.querySelectorAll('section');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');}
+  })
+},{threshold:0.2});
+sections.forEach(s=>observer.observe(s));
 
-<header>
-  <div class="logo">LANX</div>
-  <div class="menu" id="menu-btn">MENU</div>
-</header>
+// Hero slideshow with fade
+const heroBg=document.getElementById('hero-bg');
+const slides=['motogp1.jpg','motogp2.jpg','motogp3.jpg'];
+let index=0;
+function showSlide(i){
+  heroBg.style.backgroundImage=`url('${slides[i]}')`;
+  heroBg.classList.remove('active');
+  setTimeout(()=>{heroBg.classList.add('active');},50);
+}
+showSlide(index);
+setInterval(()=>{index=(index+1)%slides.length;showSlide(index);},4000);
 
-<!-- MENU OVERLAY -->
-<div class="menu-overlay" id="menu-overlay">
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#shop">Shop</a>
-    <a href="#partners">Partners</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</div>
+// Lightbox
+const lightbox=document.getElementById('lightbox');
+const lbImg=document.getElementById('lb-img');
+const lbClose=document.getElementById('lb-close');
+const lbPrev=document.getElementById('lb-prev');
+const lbNext=document.getElementById('lb-next');
+let lbImages=[], lbIndex=0;
 
-<main>
-  <section class="hero" id="home">
-    <div class="hero-bg" id="hero-bg"></div>
-    <div class="hero-content">
-      <h1>LANX</h1>
-      <p>Second or never.</p>
-      <button class="btn" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Shop Collection</button>
-    </div>
-  </section>
+document.querySelectorAll('.collection-box').forEach(box=>{
+  box.addEventListener('click', ()=>{
+    lbImages=JSON.parse(box.getAttribute('data-images'));
+    lbIndex=0; lbImg.src=lbImages[lbIndex];
+    lightbox.classList.add('active');
+  });
+});
+lbClose.addEventListener('click', ()=>{lightbox.classList.remove('active');});
+lbPrev.addEventListener('click', ()=>{lbIndex=(lbIndex-1+lbImages.length)%lbImages.length; lbImg.src=lbImages[lbIndex];});
+lbNext.addEventListener('click', ()=>{lbIndex=(lbIndex+1)%lbImages.length; lbImg.src=lbImages[lbIndex];});
 
-  <section class="shop" id="shop">
-    <h2>Shop Collection</h2>
-    <div class="collection-grid">
-      <div class="collection-box" data-images='["motogp1.jpg","motogp2.jpg"]'><img src="motogp1.jpg" alt=""><div class="overlay">Sept 25 Drop</div></div>
-      <div class="collection-box" data-images='["motogp3.jpg","motogp4.jpg"]'><img src="motogp3.jpg" alt=""><div class="overlay">Oct Drop</div></div>
-    </div>
-  </section>
-
-  <section class="partners" id="partners">
-    <h2>Our Partner</h2>
-    <div class="sponsor-box"><span>BrandA • BrandB • BrandC • BrandD • BrandE</span></div>
-  </section>
-
-  <section class="contact" id="contact">
-    <h2>Contact</h2>
-    <p>Email: info@lanx.com</p>
-    <p>Instagram: @lanx_official</p>
-  </section>
-</main>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox">
-  <span class="close" id="lb-close">×</span>
-  <span class="prev" id="lb-prev">‹</span>
-  <span class="next" id="lb-next">›</span>
-  <img id="lb-img" src="" alt="">
-</div>
-
-<script src="script.js"></script>
-</body>
-</html>
+// MENU toggle
+const menuBtn=document.getElementById('menu-btn');
+const menuOverlay=document.getElementById('menu-overlay');
+menuBtn.addEventListener('click', ()=>{menuOverlay.classList.toggle('active');});
