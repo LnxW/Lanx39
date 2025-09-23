@@ -12,9 +12,3 @@ document.querySelectorAll("#nav-overlay a").forEach(link => {
     navOverlay.classList.remove("active");
   });
 });
-
-
-// SHOP PREVIEW
-const shopPreview = document.getElementById("shop-preview");
-function openShopPreview(){shopPreview.classList.add("active");}
-function closeShopPreview(){shopPreview.classList.remove("active");}
