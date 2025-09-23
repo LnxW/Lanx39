@@ -4,67 +4,67 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LANX</title>
-  <style>
-    body {margin:0; font-family:Arial, sans-serif;}
-    .hero {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      overflow: hidden;
-    }
-    .hero img {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      top: 0; left: 0;
-      opacity: 0;
-      transition: opacity 1.5s ease;
-    }
-    .hero img.active {opacity: 1;}
-    .hero-text {
-      position: absolute;
-      bottom: 15%;
-      left: 10%;
-      color: white;
-      font-size: 2rem;
-      font-weight: bold;
-      text-shadow: 0 0 10px rgba(0,0,0,0.7);
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <section class="hero">
-    <img src="image/hero1.jpg" alt="Hero 1" class="active">
+  <!-- HEADER -->
+  <header>
+    <div class="logo">LANX</div>
+    <div class="menu-trigger" id="menu-toggle">&#9776;</div>
+  </header>
+
+  <!-- MENU OVERLAY -->
+  <div id="nav-overlay">
+    <a href="#hero">Home</a>
+    <a href="#about">About</a>
+    <a href="#" id="shop-link">Shop</a>
+    <a href="#partner">Partner</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <img src="image/hero1.jpg" class="active" alt="Hero 1">
     <img src="image/hero2.jpg" alt="Hero 2">
     <img src="image/hero3.jpg" alt="Hero 3">
-    <div class="hero-text" id="hero-caption">Second or never.</div>
+    <div class="hero-text">
+      <h1 id="hero-caption">Second or never.</h1>
+      <button>Explore</button>
+    </div>
   </section>
 
-  <script>
-    const slides = document.querySelectorAll(".hero img");
-    const captions = [
-      "Second or never.",
-      "I see red.",
-      "Rising star."
-    ];
-    const heroCaption = document.getElementById("hero-caption");
-    let currentSlide = 0;
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About <span class="sub">LANX</span></h2>
+    <p>LANX is a concept brand built for streetwear & performance vibe.</p>
+  </section>
 
-    function showSlide(n){
-      slides.forEach((slide,i)=>{
-        slide.classList.remove("active");
-        if(i===n) slide.classList.add("active");
-      });
-      heroCaption.textContent = captions[n];
-    }
+  <!-- SHOP (hidden by default) -->
+  <section id="shop">
+    <h2>Shop <span class="sub">LANX</span></h2>
+    <div class="shop-box" onclick="openShopPreview()">
+      <img src="image/dropA1.jpg" alt="Drop A">
+      <div class="overlay">Drop A - First Release</div>
+    </div>
+  </section>
 
-    setInterval(()=>{
-      currentSlide = (currentSlide+1)%slides.length;
-      showSlide(currentSlide);
-    },4000);
-  </script>
+  <!-- SHOP PREVIEW -->
+  <div class="shop-preview" id="shop-preview">
+    <span class="close" onclick="closeShopPreview()">&times;</span>
+    <div class="shop-slides">
+      <img src="image/dropA1.jpg" alt="Drop A">
+      <img src="image/dropA2.jpg" alt="Drop A">
+    </div>
+  </div>
 
+  <!-- PARTNER -->
+  <section id="partner">
+    <h2>Our Partners</h2>
+    <div class="sponsor-box">
+      <img src="image/partner.png" alt="Partner">
+    </div>
+  </section>
+
+  <script src="script.js"></script>
 </body>
 </html>
