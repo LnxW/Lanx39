@@ -1,15 +1,11 @@
-// Fade-in sections
-const sections=document.querySelectorAll('section');
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){e.target.classList.add('visible');}
-  })
-},{threshold:0.2});
-sections.forEach(s=>observer.observe(s));
+// Menu toggle
+const menuToggle=document.getElementById('menu-toggle');
+const menu=document.getElementById('menu');
+menuToggle.addEventListener('click',()=>{menu.classList.toggle('active');});
 
-// Hero slideshow with fade
+// Hero slideshow
 const heroBg=document.getElementById('hero-bg');
-const slides=['motogp1.jpg','motogp2.jpg','motogp3.jpg'];
+const slides=['hero1.jpg','hero2.jpg','hero3.jpg'];
 let index=0;
 function showSlide(i){
   heroBg.style.backgroundImage=`url('${slides[i]}')`;
@@ -19,26 +15,22 @@ function showSlide(i){
 showSlide(index);
 setInterval(()=>{index=(index+1)%slides.length;showSlide(index);},4000);
 
-// Lightbox
-const lightbox=document.getElementById('lightbox');
-const lbImg=document.getElementById('lb-img');
-const lbClose=document.getElementById('lb-close');
-const lbPrev=document.getElementById('lb-prev');
-const lbNext=document.getElementById('lb-next');
-let lbImages=[], lbIndex=0;
+// Shop preview
+const boxes=document.querySelectorAll('.collection-box');
+const overlay=document.getElementById('preview-overlay');
+const closeBtn=document.getElementById('close-preview');
+const previewSlide=document.getElementById('preview-slideshow');
 
-document.querySelectorAll('.collection-box').forEach(box=>{
-  box.addEventListener('click', ()=>{
-    lbImages=JSON.parse(box.getAttribute('data-images'));
-    lbIndex=0; lbImg.src=lbImages[lbIndex];
-    lightbox.classList.add('active');
+boxes.forEach(box=>{
+  box.addEventListener('click',()=>{
+    const images=JSON.parse(box.getAttribute('data-images'));
+    previewSlide.innerHTML="";
+    images.forEach(src=>{
+      const img=document.createElement('img');
+      img.src=src;
+      previewSlide.appendChild(img);
+    });
+    overlay.classList.add('active');
   });
 });
-lbClose.addEventListener('click', ()=>{lightbox.classList.remove('active');});
-lbPrev.addEventListener('click', ()=>{lbIndex=(lbIndex-1+lbImages.length)%lbImages.length; lbImg.src=lbImages[lbIndex];});
-lbNext.addEventListener('click', ()=>{lbIndex=(lbIndex+1)%lbImages.length; lbImg.src=lbImages[lbIndex];});
-
-// MENU toggle
-const menuBtn=document.getElementById('menu-btn');
-const menuOverlay=document.getElementById('menu-overlay');
-menuBtn.addEventListener('click', ()=>{menuOverlay.classList.toggle('active');});
+closeBtn.addEventListener('click',()=>{overlay.classList.remove('active');});
