@@ -11,7 +11,7 @@ header {
 .logo {font-size:20px; font-weight:bold;}
 .menu-trigger {font-size:28px; cursor:pointer;}
 
-/* MENU LIGHTBOX */
+/* MENU LIGHTBOX (Overlay) */
 .menu-lightbox {
   position:fixed; top:0; left:0; width:100%; height:100%;
   background:rgba(0,0,0,0.95);
@@ -19,18 +19,46 @@ header {
   opacity:0; visibility:hidden; transition:all 0.4s ease; z-index:1000;
 }
 .menu-lightbox.active {opacity:1; visibility:visible;}
-.menu-lightbox a {color:#fff; font-size:32px; margin:20px; text-decoration:none; transition:0.3s;}
+.menu-lightbox a {
+  color:#fff; font-size:32px; margin:20px; text-decoration:none; transition:0.3s;
+}
 .menu-lightbox a:hover {color:#f00;}
 
 /* HERO */
-.hero {position:relative; height:100vh; display:flex; align-items:center; justify-content:center; text-align:center;}
-.hero-bg {
-  position:absolute; top:0; left:0; width:100%; height:100%;
-  background-size:cover; background-position:center; opacity:0;
-  transition:opacity 1s ease-in-out; z-index:-1;
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
-.hero-text h1 {font-size:3em; margin-bottom:20px;}
-.hero-text button {padding:10px 20px; border:none; background:#f00; color:#fff; cursor:pointer;}
+.hero img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+.hero img.active {opacity: 1;}
+.hero-text {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(1.4rem, 5vw, 3rem); /* auto responsive */
+  font-weight: 900;
+  color: white;
+  text-align: center;
+  text-shadow: 0 5px 20px rgba(0,0,0,0.7); /* shadow lembut */
+  line-height: 1.2;
+  padding: 0 15px;
+}
+@media (max-width: 480px) {
+  .hero-text {
+    top: 45%;
+    font-size: 1.2rem; /* kecik sikit kat mobile */
+  }
+}
 
 /* SECTIONS */
 section {padding:100px 30px; text-align:center;}
@@ -71,62 +99,3 @@ h2 {font-size:2em; margin-bottom:20px;}
   to {transform:translateX(100%);}
 }
 
-/* style.css */
-#nav-overlay {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.95);
-  z-index: 1000;
-  transition: opacity 0.4s ease;
-  opacity: 0;
-}
-
-#nav-overlay.active {
-  display: flex;
-  opacity: 1;
-}
-
-/* style.css */
-.hero {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.hero img {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-
-.hero img.active {
-  opacity: 1;
-}
-
-.hero-text {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: clamp(1.4rem, 3vw, 1rem); /* auto ikut screen */
-  font-weight: 700;
-  color: white;
-  text-align: center;
-  text-shadow: 2px 2px 15px rgba(0,0,0,0.8); /* shadow balance */
-  line-height: 1.2;
-  padding: 0 15px;
-}
-
-/* Extra tweak untuk mobile */
-@media (max-width: 480px) {
-  .hero-text {
-    top: 45%;
-    font-size: 1.0rem;
-  }
-}
