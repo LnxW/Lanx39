@@ -1,30 +1,45 @@
-// Fade-in sections
-const sections=document.querySelectorAll('section');
-const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');}})},{threshold:0.2});
-sections.forEach(s=>observer.observe(s));
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+body{background:#0b0b0b;color:#fff;line-height:1.5;scroll-behavior:smooth;}
+header{position:fixed;top:0;left:0;width:100%;padding:20px;display:flex;justify-content:space-between;align-items:center;background:#0c0c0c;z-index:100;}
+header .logo{font-weight:bold;font-size:24px;cursor:pointer;}
+header .menu{cursor:pointer;font-size:18px;color:#fff;}
 
-// Hero slideshow
-const heroBg=document.getElementById('hero-bg');
-const slides=['motogp1.jpg','motogp2.jpg','motogp3.jpg'];
-let index=0;
-setInterval(()=>{index=(index+1)%slides.length; heroBg.style.backgroundImage=`url('${slides[index]}')`;},4000);
+main{padding-top:100px;max-width:1200px;margin:auto;}
+section{padding:50px 20px;opacity:0;transform:translateY(30px);transition:all 0.8s ease;}
+section.visible{opacity:1;transform:translateY(0);}
 
-// Lightbox for shop
-const lightbox=document.getElementById('lightbox');
-const lbImg=document.getElementById('lb-img');
-const lbClose=document.getElementById('lb-close');
-const lbPrev=document.getElementById('lb-prev');
-const lbNext=document.getElementById('lb-next');
-let lbImages=[], lbIndex=0;
+/* HERO */
+.hero{position:relative;min-height:70vh;display:flex;align-items:center;justify-content:flex-start;padding:40px;overflow:hidden;border-radius:16px;}
+.hero-bg{position:absolute;top:0;left:0;right:0;bottom:0;background-size:cover;background-position:center;z-index:1;border-radius:16px;opacity:0;transition:opacity 1s;}
+.hero-bg.active{opacity:1;}
+.hero-content{position:relative;z-index:2;}
+.hero-content h1{font-size:48px;margin-bottom:12px;}
+.hero-content p{font-size:18px;color:#aaa;margin-bottom:20px;}
+.btn{padding:10px 20px;border:2px solid #e12b2b;background:transparent;color:#e12b2b;font-weight:bold;cursor:pointer;border-radius:8px;}
 
-document.querySelectorAll('.collection-box').forEach(box=>{
-  box.addEventListener('click', ()=>{
-    lbImages=JSON.parse(box.getAttribute('data-images'));
-    lbIndex=0; lbImg.src=lbImages[lbIndex];
-    lightbox.classList.add('active');
-  });
-});
+/* SHOP */
+.collection-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;margin-top:20px;}
+.collection-box{position:relative;cursor:pointer;overflow:hidden;border-radius:12px;}
+.collection-box img{width:100%;display:block;height:300px;object-fit:cover;}
+.overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(180deg,transparent,rgba(0,0,0,0.7));color:#fff;padding:10px;font-weight:bold;}
 
-lbClose.addEventListener('click', ()=>{lightbox.classList.remove('active');});
-lbPrev.addEventListener('click', ()=>{lbIndex=(lbIndex-1+lbImages.length)%lbImages.length; lbImg.src=lbImages[lbIndex];});
-lbNext.addEventListener('click', ()=>{lbIndex=(lbIndex+1)%lbImages.length; lbImg.src=lbImages[lbIndex];});
+/* PARTNERS */
+.partners h2{margin-bottom:12px;}
+.sponsor-box{overflow:hidden;white-space:nowrap;}
+.sponsor-box span{display:inline-block;padding-left:100%;animation:move 15s linear infinite;}
+@keyframes move{0%{transform:translateX(0);}100%{transform:translateX(-100%);}}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);display:flex;align-items:center;justify-content:center;visibility:hidden;opacity:0;transition:opacity 0.3s;flex-direction:column;z-index:200;}
+.lightbox.active{visibility:visible;opacity:1;}
+.lightbox img{max-width:90%;max-height:80%;border-radius:12px;}
+.lightbox .close{position:absolute;top:20px;right:30px;font-size:28px;color:#fff;cursor:pointer;font-weight:900;}
+.lightbox .prev,.lightbox .next{position:absolute;top:50%;transform:translateY(-50%);font-size:48px;color:#fff;cursor:pointer;font-weight:900;user-select:none;}
+.lightbox .prev{left:30px;}
+.lightbox .next{right:30px;}
+
+/* MENU OVERLAY */
+.menu-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);display:flex;align-items:center;justify-content:center;flex-direction:column;opacity:0;visibility:hidden;transition:0.5s;z-index:300;}
+.menu-overlay.active{opacity:1;visibility:visible;}
+.menu-overlay nav a{color:#fff;font-size:32px;text-decoration:none;margin:15px;transition:0.3s;}
+.menu-overlay nav a:hover{color:#e12b2b;}
