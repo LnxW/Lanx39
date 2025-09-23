@@ -1,29 +1,82 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LANX</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- NAV -->
   <header>
     <div class="logo">LANX</div>
-    <div class="menu-trigger" id="menu-trigger">MENU</div>
+    <div id="menu-trigger" class="menu-trigger">&#9776;</div>
   </header>
 
-  <div class="menu-lightbox" id="menu-lightbox">
-    <a href="#home">home</a>
-    <a href="#about">about</a>
-    <a href="#shop">shop</a>
-    <a href="#partners">partners</a>
-    <a href="#contact">contact</a>
+  <!-- MENU LIGHTBOX -->
+  <div id="menu-lightbox" class="menu-lightbox">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#shop">Shop</a>
+    <a href="#partner">Partner</a>
+    <a href="#contact">Contact</a>
   </div>
 
-  <main>
-    <!-- Hero -->
-    <section class="hero" id="home">
-      <div class="hero-left">
-        <h1 id="hero-title">LANX<br>FOCUS ON STYLE</h1>
-        <div class="subtitle" id="hero-subtitle">Second or never.</div>
-        <div class="cta"><button class="btn" onclick="location.href='#shop'"
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div id="hero-bg" class="hero-bg"></div>
+    <div class="hero-text">
+      <h1 id="hero-caption">Second or never.</h1>
+      <button onclick="document.getElementById('shop').scrollIntoView()">Shop Now</button>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About</h2>
+    <p>
+      LANX is a modern lifestyle and performance apparel brand designed for those who live life in motion. 
+      Blending sport functionality with streetwear aesthetics, our collection delivers ultimate comfort 
+      for daily wear while embracing the energy, speed, and dynamism of an active lifestyle. 
+      Every piece is crafted to move with you, whether you're chasing personal bests, navigating the city, 
+      or expressing your individual style, making LANX the perfect fusion of performance, style, and effortless wearability. 
+      Join the movement and share your journey with <b>#LANX39</b>.
+    </p>
+  </section>
+
+  <!-- SHOP -->
+  <section id="shop">
+    <h2>Shop Collection</h2>
+    <div class="shop-box" onclick="openShopPreview()">
+      <img src="image/dropA1.jpg" alt="Drop A">
+      <div class="overlay">Sept 25 Drop</div>
+    </div>
+  </section>
+
+  <!-- SHOP PREVIEW -->
+  <div id="shop-preview" class="shop-preview">
+    <span class="close" onclick="closeShopPreview()">&times;</span>
+    <div class="shop-slides">
+      <img src="image/dropA1.jpg" alt="">
+      <img src="image/dropA2.jpg" alt="">
+      <img src="image/dropA3.jpg" alt="">
+    </div>
+  </div>
+
+  <!-- PARTNER -->
+  <section id="partner">
+    <h2>Our Partner <span class="sub">looking forward</span></h2>
+    <div class="sponsor-box">
+      <img src="image/sponsor1.png" alt="Sponsor">
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: info@lanx.com</p>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
