@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lanx</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lanx</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
   <div class="logo">LANX</div>
-  <div class="menu">MENU</div>
+  <div class="menu" id="menu-btn">MENU</div>
 </header>
+
+<!-- MENU OVERLAY -->
+<div class="menu-overlay" id="menu-overlay">
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#shop">Shop</a>
+    <a href="#partners">Partners</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</div>
 
 <main>
   <section class="hero" id="home">
-    <div class="hero-bg" id="hero-bg" style="background-image:url('motogp1.jpg');"></div>
+    <div class="hero-bg" id="hero-bg"></div>
     <div class="hero-content">
       <h1>LANX</h1>
       <p>Second or never.</p>
@@ -26,14 +37,18 @@
   <section class="shop" id="shop">
     <h2>Shop Collection</h2>
     <div class="collection-grid">
-      <div class="collection-box" data-images='["motogp1.jpg","motogp2.jpg"]'><img src="motogp1.jpg" alt=""><div class="overlay">Sept 25 Drop</div></div>
-      <div class="collection-box" data-images='["motogp3.jpg","motogp4.jpg"]'><img src="motogp3.jpg" alt=""><div class="overlay">Oct Drop</div></div>
+      <div class="collection-box" data-images='["motogp1.jpg","motogp2.jpg"]'>
+        <img src="motogp1.jpg" alt=""><div class="overlay">Sept 25 Drop</div>
+      </div>
+      <div class="collection-box" data-images='["motogp3.jpg","motogp4.jpg"]'>
+        <img src="motogp3.jpg" alt=""><div class="overlay">Oct Drop</div>
+      </div>
     </div>
   </section>
 
   <section class="partners" id="partners">
     <h2>Our Partner</h2>
-    <div class="sponsor-box"><span>BrandA • BrandB • BrandC • BrandD • BrandE • BrandF</span></div>
+    <div class="sponsor-box"><span>BrandA • BrandB • BrandC • BrandD • BrandE</span></div>
   </section>
 
   <section class="contact" id="contact">
@@ -43,6 +58,7 @@
   </section>
 </main>
 
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
   <span class="close" id="lb-close">×</span>
   <span class="prev" id="lb-prev">‹</span>
