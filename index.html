@@ -8,60 +8,41 @@
 </head>
 <body>
 
-<header>
-  <div class="logo">LANX</div>
-  <div class="menu-trigger" id="menu-toggle">&#9776;</div> <!-- trigger -->
-</header>
+  <!-- HEADER -->
+  <header>
+    <div class="logo">LANX</div>
+    <div id="menu-toggle">&#9776;</div> <!-- menu icon -->
+  </header>
 
-<!-- MENU OVERLAY -->
-<div id="nav-overlay">
-  <a href="#hero">Home</a>
-  <a href="#about">About</a>
-  <a href="#shop" id="shop-link">Shop</a>
-  <a href="#partner">Partner</a>
-</div>
+  <!-- MENU OVERLAY -->
+  <div id="nav-overlay">
+    <a href="#hero">Home</a>
+    <a href="#about">About</a>
+    <a href="#shop" id="shop-link">Shop</a>
+    <a href="#partner">Partner</a>
+  </div>
 
   <!-- HERO -->
-  <section class="hero" id="hero">
-    <img src="image/hero1.jpg" class="active" alt="Hero 1">
-    <img src="image/hero2.jpg" alt="Hero 2">
-    <img src="image/hero3.jpg" alt="Hero 3">
-    <div class="hero-text">
-      <h1 id="hero-caption">Second or never.</h1>
-      <button>Explore</button>
-    </div>
+  <section id="hero">
+    <h1>Second or Never.</h1>
   </section>
 
   <!-- ABOUT -->
   <section id="about">
-    <h2>About <span class="sub">LANX</span></h2>
-    <p>LANX is a concept brand built for streetwear & performance vibe.</p>
+    <h2>About</h2>
+    <p>LANX is a modern lifestyle brand.</p>
   </section>
 
-  <!-- SHOP (hidden by default) -->
+  <!-- SHOP -->
   <section id="shop">
-    <h2>Shop <span class="sub">LANX</span></h2>
-    <div class="shop-box" onclick="openShopPreview()">
-      <img src="image/dropA1.jpg" alt="Drop A">
-      <div class="overlay">Drop A - First Release</div>
-    </div>
+    <h2>Shop</h2>
+    <p>Shop content here…</p>
   </section>
-
-  <!-- SHOP PREVIEW -->
-  <div class="shop-preview" id="shop-preview">
-    <span class="close" onclick="closeShopPreview()">&times;</span>
-    <div class="shop-slides">
-      <img src="image/dropA1.jpg" alt="Drop A">
-      <img src="image/dropA2.jpg" alt="Drop A">
-    </div>
-  </div>
 
   <!-- PARTNER -->
   <section id="partner">
-    <h2>Our Partners</h2>
-    <div class="sponsor-box">
-      <img src="image/partner.png" alt="Partner">
-    </div>
+    <h2>Our Partner</h2>
+    <p>Partner content here…</p>
   </section>
 
   <script src="script.js"></script>
