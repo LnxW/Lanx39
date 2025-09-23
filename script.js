@@ -1,45 +1,67 @@
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
-body{background:#0b0b0b;color:#fff;line-height:1.5;scroll-behavior:smooth;}
-header{position:fixed;top:0;left:0;width:100%;padding:20px;display:flex;justify-content:space-between;align-items:center;background:#0c0c0c;z-index:100;}
-header .logo{font-weight:bold;font-size:24px;cursor:pointer;}
-header .menu{cursor:pointer;font-size:18px;color:#fff;}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lanx</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-main{padding-top:100px;max-width:1200px;margin:auto;}
-section{padding:50px 20px;opacity:0;transform:translateY(30px);transition:all 0.8s ease;}
-section.visible{opacity:1;transform:translateY(0);}
+<header>
+  <div class="logo">LANX</div>
+  <div class="menu" id="menu-btn">MENU</div>
+</header>
 
-/* HERO */
-.hero{position:relative;min-height:70vh;display:flex;align-items:center;justify-content:flex-start;padding:40px;overflow:hidden;border-radius:16px;}
-.hero-bg{position:absolute;top:0;left:0;right:0;bottom:0;background-size:cover;background-position:center;z-index:1;border-radius:16px;opacity:0;transition:opacity 1s;}
-.hero-bg.active{opacity:1;}
-.hero-content{position:relative;z-index:2;}
-.hero-content h1{font-size:48px;margin-bottom:12px;}
-.hero-content p{font-size:18px;color:#aaa;margin-bottom:20px;}
-.btn{padding:10px 20px;border:2px solid #e12b2b;background:transparent;color:#e12b2b;font-weight:bold;cursor:pointer;border-radius:8px;}
+<!-- MENU OVERLAY -->
+<div class="menu-overlay" id="menu-overlay">
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#shop">Shop</a>
+    <a href="#partners">Partners</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</div>
 
-/* SHOP */
-.collection-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;margin-top:20px;}
-.collection-box{position:relative;cursor:pointer;overflow:hidden;border-radius:12px;}
-.collection-box img{width:100%;display:block;height:300px;object-fit:cover;}
-.overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(180deg,transparent,rgba(0,0,0,0.7));color:#fff;padding:10px;font-weight:bold;}
+<main>
+  <section class="hero" id="home">
+    <div class="hero-bg" id="hero-bg"></div>
+    <div class="hero-content">
+      <h1>LANX</h1>
+      <p>Second or never.</p>
+      <button class="btn" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Shop Collection</button>
+    </div>
+  </section>
 
-/* PARTNERS */
-.partners h2{margin-bottom:12px;}
-.sponsor-box{overflow:hidden;white-space:nowrap;}
-.sponsor-box span{display:inline-block;padding-left:100%;animation:move 15s linear infinite;}
-@keyframes move{0%{transform:translateX(0);}100%{transform:translateX(-100%);}}
+  <section class="shop" id="shop">
+    <h2>Shop Collection</h2>
+    <div class="collection-grid">
+      <div class="collection-box" data-images='["motogp1.jpg","motogp2.jpg"]'><img src="motogp1.jpg" alt=""><div class="overlay">Sept 25 Drop</div></div>
+      <div class="collection-box" data-images='["motogp3.jpg","motogp4.jpg"]'><img src="motogp3.jpg" alt=""><div class="overlay">Oct Drop</div></div>
+    </div>
+  </section>
 
-/* LIGHTBOX */
-.lightbox{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);display:flex;align-items:center;justify-content:center;visibility:hidden;opacity:0;transition:opacity 0.3s;flex-direction:column;z-index:200;}
-.lightbox.active{visibility:visible;opacity:1;}
-.lightbox img{max-width:90%;max-height:80%;border-radius:12px;}
-.lightbox .close{position:absolute;top:20px;right:30px;font-size:28px;color:#fff;cursor:pointer;font-weight:900;}
-.lightbox .prev,.lightbox .next{position:absolute;top:50%;transform:translateY(-50%);font-size:48px;color:#fff;cursor:pointer;font-weight:900;user-select:none;}
-.lightbox .prev{left:30px;}
-.lightbox .next{right:30px;}
+  <section class="partners" id="partners">
+    <h2>Our Partner</h2>
+    <div class="sponsor-box"><span>BrandA • BrandB • BrandC • BrandD • BrandE</span></div>
+  </section>
 
-/* MENU OVERLAY */
-.menu-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);display:flex;align-items:center;justify-content:center;flex-direction:column;opacity:0;visibility:hidden;transition:0.5s;z-index:300;}
-.menu-overlay.active{opacity:1;visibility:visible;}
-.menu-overlay nav a{color:#fff;font-size:32px;text-decoration:none;margin:15px;transition:0.3s;}
-.menu-overlay nav a:hover{color:#e12b2b;}
+  <section class="contact" id="contact">
+    <h2>Contact</h2>
+    <p>Email: info@lanx.com</p>
+    <p>Instagram: @lanx_official</p>
+  </section>
+</main>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <span class="close" id="lb-close">×</span>
+  <span class="prev" id="lb-prev">‹</span>
+  <span class="next" id="lb-next">›</span>
+  <img id="lb-img" src="" alt="">
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
