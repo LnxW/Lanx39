@@ -1,67 +1,29 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>LANX</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header>
+    <div class="logo">LANX</div>
+    <div class="menu-trigger" id="menu-trigger">MENU</div>
+  </header>
 
-<header>
-  <div class="menu-toggle" id="menu-toggle">☰</div>
-  <div class="logo">LANX</div>
-</header>
+  <div class="menu-lightbox" id="menu-lightbox">
+    <a href="#home">home</a>
+    <a href="#about">about</a>
+    <a href="#shop">shop</a>
+    <a href="#partners">partners</a>
+    <a href="#contact">contact</a>
+  </div>
 
-<nav id="menu" class="menu">
-  <a href="#home">Home</a>
-  <a href="#shop">Shop</a>
-  <a href="#partners">Partners</a>
-  <a href="#contact">Contact</a>
-</nav>
-
-<main>
-  <!-- Hero -->
-  <section class="hero" id="home">
-    <div class="hero-bg" id="hero-bg"></div>
-    <div class="hero-content">
-      <h1 id="hero-text">LANX</h1>
-      <p>Second or never.</p>
-      <button onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Shop Now</button>
-    </div>
-  </section>
-
-  <!-- Shop -->
-  <section class="shop" id="shop">
-    <h2>Shop Collection</h2>
-    <div class="collection-grid">
-      <div class="collection-box" data-images='["dropA1.jpg","dropA2.jpg"]'>
-        <img src="dropA1.jpg" alt="">
-        <div class="overlay">Sept 25 Drop</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Partners -->
-  <section class="partners" id="partners">
-    <h2>Our Partner <span class="small">Looking forward</span></h2>
-    <div class="sponsor-box"><span>BrandA • BrandB • BrandC • BrandD</span></div>
-  </section>
-
-  <!-- Contact -->
-  <section class="contact" id="contact">
-    <h2>Contact</h2>
-    <p>Email: info@lanx.com</p>
-    <p>Instagram: @lanx_official</p>
-  </section>
-</main>
-
-<!-- Shop Preview Overlay -->
-<div id="preview-overlay" class="preview-overlay">
-  <span id="close-preview" class="close-btn">×</span>
-  <div class="preview-slideshow" id="preview-slideshow"></div>
-</div>
-
-<script src="script.js"></script>
-</body>
-</html>
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="hero-left">
+        <h1 id="hero-title">LANX<br>FOCUS ON STYLE</h1>
+        <div class="subtitle" id="hero-subtitle">Second or never.</div>
+        <div class="cta"><button class="btn" onclick="location.href='#shop'"
