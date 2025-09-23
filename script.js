@@ -10,27 +10,19 @@ let heroIndex = 0;
 
 function showHero(){
   heroBg.style.opacity = 0;
-  setTimeout(()=> {
+  setTimeout(() => {
     heroBg.style.backgroundImage = `url('${heroSlides[heroIndex].img}')`;
     heroCaption.textContent = heroSlides[heroIndex].text;
     heroBg.style.opacity = 1;
-  },500);
+  }, 400);
   heroIndex = (heroIndex+1)%heroSlides.length;
 }
 showHero();
 setInterval(showHero,4000);
 
 // MENU
-const menuToggle = document.getElementById("menu-toggle");
-const navOverlay = document.getElementById("nav-overlay");
-
-menuToggle.addEventListener("click", () => {
-  navOverlay.classList.toggle("active");
-});
-
-// Close when link clicked
-document.querySelectorAll("#nav-overlay a").forEach(link => {
-  link.addEventListener("click", () => {
-    navOverlay.classList.remove("active");
-  });
+const menuTrigger = document.getElementById("menu-trigger");
+const menuLightbox = document.getElementById("menu-lightbox");
+menuTrigger.addEventListener("click", ()=> {
+  menuLightbox.classList.toggle("active");
 });
