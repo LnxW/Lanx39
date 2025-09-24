@@ -11,66 +11,82 @@
   <!-- HEADER -->
   <header>
     <div class="logo">LANX39</div>
-    <div id="menu-toggle" class="menu-trigger">&#9776;</div>
+    <div id="menu-toggle" class="menu-toggle">☰</div>
   </header>
 
   <!-- MENU OVERLAY -->
-  <div id="nav-overlay">
+  <nav id="menu-overlay" class="menu-overlay">
     <a href="#hero">Home</a>
     <a href="#about">About</a>
     <a href="#shop">Shop</a>
-    <a href="#partner">Partner</a>
+    <a href="#partners">Partners</a>
     <a href="#contact">Contact</a>
-  </div>
+  </nav>
 
   <!-- HERO -->
   <section id="hero" class="hero">
+    <div class="hero-slide active" style="background-image:url('image/hero1.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('image/hero2.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('image/hero3.jpg')"></div>
     <div class="hero-text">
-      <h1 id="hero-caption">Second or never.</h1>
+      <h1 id="hero-caption">Second or Never.</h1>
     </div>
-    <div class="hero-bg" id="hero-bg"></div>
   </section>
 
   <!-- ABOUT -->
   <section id="about">
-    <h2>About Us</h2>
-    <p>LANX39 is where speed, comfort, and daily wear collide.</p>
+    <h2>About LANX39</h2>
+    <p>LANX39 delivers performance-inspired streetwear that blends comfort, speed, and lifestyle. Designed for those who never settle.</p>
   </section>
 
   <!-- SHOP -->
   <section id="shop">
     <h2>Shop</h2>
-    <div class="shop-container">
-      <div class="shop-box" onclick="openShopPreview(0)">
-        <img src="image/prod1.jpg" alt="">
-        <div class="overlay">Product 1</div>
+    <div class="shop-grid">
+      <div class="shop-item" onclick="openShopPreview(0)">
+        <img src="image/shop1.jpg" alt="Item 1">
+        <p>Red Motion Tee</p>
       </div>
-      <div class="shop-box" onclick="openShopPreview(1)">
-        <img src="image/prod2.jpg" alt="">
-        <div class="overlay">Product 2</div>
+      <div class="shop-item" onclick="openShopPreview(1)">
+        <img src="image/shop2.jpg" alt="Item 2">
+        <p>Black Velocity Hoodie</p>
+      </div>
+      <div class="shop-item" onclick="openShopPreview(2)">
+        <img src="image/shop3.jpg" alt="Item 3">
+        <p>Grey Speed Cap</p>
       </div>
     </div>
   </section>
 
-  <!-- SHOP PREVIEW MODAL -->
+  <!-- SHOP PREVIEW -->
   <div id="shop-preview" class="shop-preview">
     <span class="close" onclick="closeShopPreview()">&times;</span>
     <div class="shop-slides">
-      <img src="image/prod1.jpg" alt="">
-      <img src="image/prod2.jpg" alt="">
+      <img id="shop-preview-img" src="" alt="Preview">
+      <p id="shop-preview-text"></p>
     </div>
   </div>
 
-  <!-- PARTNER -->
-  <section id="partner">
-    <h2>Partner</h2>
-    <div class="sponsor-box"><img src="image/sponsor.png"></div>
+  <!-- PARTNERS -->
+  <section id="partners">
+    <h2>Our Partners</h2>
+    <div class="partner-slider">
+      <img src="image/partner1.png" alt="Partner 1">
+      <img src="image/partner2.png" alt="Partner 2">
+      <img src="image/partner3.png" alt="Partner 3">
+    </div>
   </section>
 
   <!-- CONTACT -->
   <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: lanx39@email.com</p>
+    <h2>Contact Us</h2>
+    <p>Email: support@lanx39.com</p>
+    <form>
+      <input type="text" placeholder="Your Name">
+      <input type="email" placeholder="Your Email">
+      <textarea placeholder="Message"></textarea>
+      <button type="submit">Send</button>
+    </form>
   </section>
 
   <script src="script.js"></script>
