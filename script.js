@@ -33,21 +33,23 @@ showHero();
 setInterval(showHero, 4000);
 
 // SHOP PREVIEW
-const shopProducts=[
-  ["image/shop1_a.jpg","image/shop1_b.jpg","image/shop1_c.jpg"],
-  ["image/shop2_a.jpg","image/shop2_b.jpg"],
-  ["image/shop3_a.jpg","image/shop3_b.jpg","image/shop3_c.jpg"]
+cconst shopProducts = [
+  ["image/shop1.jpg"], 
+  ["image/shop2.jpg"], 
+  ["image/shop3.jpg"]
 ];
-function openShopPreview(i){
-  const container=document.getElementById("shop-slides");
-  container.innerHTML="";
-  shopProducts[i].forEach(src=>{
-    const img=document.createElement("img");
-    img.src=src;
-    container.appendChild(img);
+
+function openShopPreview(index) {
+  const slidesContainer = document.getElementById("shop-slides");
+  slidesContainer.innerHTML = "";
+  shopProducts[index].forEach(img => {
+    const image = document.createElement("img");
+    image.src = img;
+    slidesContainer.appendChild(image);
   });
   document.getElementById("shop-preview").classList.add("active");
 }
-function closeShopPreview(){
+
+function closeShopPreview() {
   document.getElementById("shop-preview").classList.remove("active");
 }
