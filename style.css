@@ -1,185 +1,139 @@
 html, body {
-  overflow-x: hidden;  /* block sideway scroll */
+  overflow-x: hidden; 
   width: 100%;
+  font-family: Arial, sans-serif;
+  background: #111;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
 }
 
-/* RESET */
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:Arial, sans-serif;background:#111;color:#fff;scroll-behavior:smooth;}
-h2{text-transform:uppercase;margin-bottom:20px;}
-
 /* HEADER */
-header{position:fixed;top:0;left:0;width:100%;display:flex;justify-content:space-between;align-items:center;padding:15px 30px;background:rgba(0,0,0,0.5);z-index:999;}
-.logo{font-weight:bold;font-size:20px;}
-.menu-toggle{font-size:28px;cursor:pointer;}
+header {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: rgba(0,0,0,0.5);
+  z-index: 999;
+}
+.logo {font-size: 20px; font-weight: bold;}
+.menu-toggle {font-size: 28px; cursor: pointer;}
 
-/* MENU OVERLAY */
-.menu-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);display:flex;flex-direction:column;justify-content:center;align-items:center;opacity:0;visibility:hidden;transition:all 0.4s ease;z-index:1000;}
-.menu-overlay.active{opacity:1;visibility:visible;}
-.menu-overlay a{color:#fff;font-size:32px;margin:15px;text-decoration:none;transition:0.3s;}
-.menu-overlay a:hover{color:red;}
+/* MENU */
+.menu-overlay {
+  position: fixed; top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.95);
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  opacity: 0; visibility: hidden;
+  transition: all 0.4s ease;
+  z-index: 1000;
+}
+.menu-overlay.active {opacity: 1; visibility: visible;}
+.menu-overlay a {
+  color: #fff; font-size: 32px; margin: 15px;
+  text-decoration: none; transition: 0.3s;
+}
+.menu-overlay a:hover {color: red;}
 
 /* HERO */
 .hero {
   position: relative;
   height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  overflow: hidden;
+  display: flex; justify-content: center; align-items: center;
+  text-align: center; overflow: hidden;
 }
-
 .hero-bg {
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background-size: cover;
-  background-position: center;
-  transition: opacity 1s ease-in-out;
-  opacity: 0;
+  background-size: cover; background-position: center;
+  opacity: 0; transition: opacity 1s ease-in-out;
   z-index: -1;
 }
-
-.hero-bg.active {
-  opacity: 1;
-}
-
+.hero-bg.active {opacity: 1;}
 .hero-text h1 {
   font-size: clamp(1.5rem, 5vw, 3rem);
-  text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
-  margin-bottom: 20px;
-}
-
-.hero-btn {
-  padding: 12px 28px;
-  border: none;
-  border-radius: 25px;
-  background: #ff0000;
+  font-weight: 700;
   color: #fff;
-  font-size: 1rem;
-  font-weight: bold;
+  text-shadow: 0px 4px 20px rgba(0,0,0,0.5);
+}
+.hero-text h1 .red {color: red;}
+.hero-btn {
+  margin-top: 20px;
+  padding: 12px 28px;
+  border: none; border-radius: 25px;
+  background: #f00; color: #fff;
+  font-size: 1rem; font-weight: bold;
   cursor: pointer;
   transition: background 0.3s ease;
 }
+.hero-btn:hover {background: #c00;}
 
-.hero-btn:hover {
-  background: #cc0000;
-}
-/* Background untuk hero */
-.hero-bg {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background-size: cover;
-  background-position: center;
-  transition: opacity 1s ease-in-out;
-  z-index: -1;
-}
-
-/* Text */
-.hero-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.hero-text h1 {
-  font-size: clamp(1.5rem, 4vw, 3rem);
-  font-weight: 700;
-  color: #fff;
-  text-shadow: 0px 4px 20px rgba(0,0,0,0.5); /* 50% shadow */
-  transition: opacity 1s ease-in-out;
-}
-
-.hero-text h1 span.red {
-  color: red; /* highlight "red" */
-}
-
-/* SECTION */
-section{padding:100px 30px;text-align:center;}
+/* SECTIONS */
+section {padding: 100px 30px; text-align: center;}
+h2 {font-size: 2em; margin-bottom: 20px; text-transform: uppercase;}
 
 /* SHOP */
-.shop-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-top:30px;}
-.shop-item{cursor:pointer;background:#222;padding:10px;border-radius:8px;transition:0.3s;}
-.shop-item:hover{transform:scale(1.05);}
-.shop-item img{width:100%;border-radius:8px;}
-.shop-preview{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);display:none;justify-content:center;align-items:center;flex-direction:column;z-index:2000;}
-.shop-preview.active{display:flex;}
-.shop-preview .close{position:absolute;top:20px;right:30px;font-size:40px;cursor:pointer;}
+.shop-grid {
+  display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  gap: 20px; margin-top: 30px;
+}
+.shop-item {cursor:pointer; background:#222; padding:10px; border-radius:8px; transition:0.3s;}
+.shop-item:hover {transform: scale(1.05);}
+.shop-item img {width:100%; border-radius:8px;}
+.shop-item .overlay {margin-top: 8px;}
+
+/* SHOP PREVIEW */
+.shop-preview {
+  position: fixed; top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.95);
+  display: none; justify-content:center; align-items:center;
+  flex-direction:column; z-index:2000;
+}
+.shop-preview.active {display:flex;}
+.shop-preview .close {
+  position:absolute; top:20px; right:30px;
+  font-size:40px; cursor:pointer;
+}
 .shop-slides {
-  display: flex;
-  gap: 10px;
-  flex-wrap: nowrap;
-  overflow-x: auto; /* boleh scroll kiri kanan */
+  display: flex; gap: 10px;
+  flex-wrap: nowrap; overflow-x: auto;
   max-width: 90%;
 }
-
 .shop-slides img {
   max-height: 80vh;
   border-radius: 8px;
   object-fit: contain;
 }
 
-}
-
-
-/* Partner Section */
-#partner {
-  background: #111;       /* sama warna dengan web */
-  padding: 60px 20px;
-  text-align: center;
-}
-
-#partner h2 {
-  color: #fff;
-  font-size: 1.8rem;
-  margin-bottom: 20px;
-}
-
+/* PARTNER */
+#partner {background:#111; padding:60px 20px;}
 .partner-box {
-  background: #fff;
-  padding: 15px 20px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;           /* jarak antara logo */
-  flex-wrap: nowrap;   /* jangan turun bawah */
-  overflow-x: auto;    /* boleh scroll kiri kanan kalau byk logo */
+  background:#fff; padding:15px 20px;
+  border-radius:10px;
+  display:flex; justify-content:center; align-items:center;
+  gap:30px; flex-wrap: nowrap;
+  overflow-x:auto;
 }
-
-.partner-box img {
-  max-height: 50px;   /* saiz logo kecik */
-  width: auto;
-  flex-shrink: 0;     /* maintain saiz */
-}
-
+.partner-box img {max-height:50px; width:auto; flex-shrink:0;}
 
 /* CONTACT */
-#contact {
-  padding: 80px 20px;
-  text-align: center;
-  background: #111;
-  color: #fff;
-}
+#contact {padding:80px 20px; background:#111;}
 .contact-btn {
-  display: inline-block;
-  padding: 12px 25px;
-  background: #f00;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 25px;
-  font-weight: bold;
-  transition: background 0.3s ease;
+  display:inline-block;
+  padding:12px 25px;
+  background:#f00; color:#fff;
+  text-decoration:none;
+  border-radius:25px;
+  font-weight:bold;
+  transition:background 0.3s ease;
 }
-.contact-btn:hover {
-  background: #c00;
-  
-/* prevent horizontal scroll */
-html, body {
-  overflow-x: hidden; /* block sideway scroll */
-}
-
+.contact-btn:hover {background:#c00;}
