@@ -39,33 +39,36 @@ section{padding:100px 30px;text-align:center;}
 .shop-preview .close{position:absolute;top:20px;right:30px;font-size:40px;cursor:pointer;}
 .shop-slides img{max-width:80%;border-radius:8px;margin-bottom:10px;}
 
-/* PARTNER */
+/* Partner Section */
 #partner {
-  padding: 20px 10px;   /* nipis sikit berbanding 40px */
-  background: #fff;
+  background: #111;       /* sama warna dengan web */
+  padding: 60px 20px;
   text-align: center;
 }
 
-.partner-logos {
+#partner h2 {
+  color: #fff;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.partner-box {
+  background: #fff;
+  padding: 15px 20px;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 25px; /* spacing antara logo */
+  gap: 30px;           /* jarak antara logo */
+  flex-wrap: nowrap;   /* jangan turun bawah */
+  overflow-x: auto;    /* boleh scroll kiri kanan kalau byk logo */
 }
 
-.partner-logos img {
-  max-height: 50px;  /* sikit lebih kecik */
+.partner-box img {
+  max-height: 50px;   /* saiz logo kecik */
   width: auto;
-  object-fit: contain;
-  filter: grayscale(100%);
-  transition: filter 0.3s ease;
+  flex-shrink: 0;     /* maintain saiz */
 }
-
-.partner-logos img:hover {
-  filter: grayscale(0%);
-}
-
 
 
 /* CONTACT */
