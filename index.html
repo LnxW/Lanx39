@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lanx39</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -11,63 +11,63 @@
   <!-- HEADER -->
   <header>
     <div class="logo">LANX39</div>
-    <button id="menu-toggle" class="menu-toggle" aria-label="Open menu">☰</button>
+    <div id="menu-toggle" class="menu-toggle">☰</div>
   </header>
 
   <!-- MENU OVERLAY -->
-  <nav id="menu-overlay" class="menu-overlay" aria-hidden="true">
+  <nav id="menu-overlay" class="menu-overlay">
     <a href="#hero">Home</a>
     <a href="#about">About</a>
     <a href="#shop">Shop</a>
-    <a href="#partner">Brands</a>
-    <a href="LINK-KAT-SINI" target="_blank">Contact</a>
+    <a href="#partner">Partners</a>
+    <a href="#contact">Contact</a>
   </nav>
 
   <!-- HERO -->
-  <section id="hero" class="hero">
-    <div id="hero-bg" class="hero-bg" role="img" aria-label="Hero background"></div>
+  <section class="hero" id="hero">
+    <div class="hero-bg" id="hero-bg"></div>
     <div class="hero-text">
       <h1 id="hero-caption">Second or never.</h1>
-      <button class="hero-btn" id="shop-now">Shop Now</button>
+      <button class="hero-btn" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">
+        Shop Now
+      </button>
     </div>
   </section>
 
   <!-- ABOUT -->
-  <section id="about" class="section">
+  <section id="about">
     <h2>About LANX39</h2>
     <p>LANX39 delivers performance-inspired streetwear that blends comfort, speed, and lifestyle. Designed for those who never settle.</p>
   </section>
 
   <!-- SHOP -->
-  <section id="shop" class="section">
+  <section id="shop">
     <h2>Shop</h2>
     <div class="shop-grid">
-      <div class="shop-item" onclick="openShopPreview(0)" role="button" tabindex="0">
-        <img src="image/shop1.jpg" alt="Shop item 1">
+      <div class="shop-item" onclick="openShopPreview(0)">
+        <img src="image/shop1.jpg" alt="Black Velocity Hoodie">
         <div class="overlay">Black Velocity Hoodie</div>
       </div>
-
-      <div class="shop-item" onclick="openShopPreview(1)" role="button" tabindex="0">
-        <img src="image/shop2.jpg" alt="Shop item 2">
+      <div class="shop-item" onclick="openShopPreview(1)">
+        <img src="image/shop2.jpg" alt="Saturation Tee">
         <div class="overlay">Saturation Tee</div>
       </div>
-
-      <div class="shop-item" onclick="openShopPreview(2)" role="button" tabindex="0">
-        <img src="image/shop3.jpg" alt="Shop item 3">
+      <div class="shop-item" onclick="openShopPreview(2)">
+        <img src="image/shop3.jpg" alt="Rising Polo">
         <div class="overlay">Rising Polo</div>
       </div>
     </div>
   </section>
 
-  <!-- SHOP PREVIEW POPUP -->
-  <div id="shop-preview" class="shop-preview" aria-hidden="true">
-    <button class="close" id="shop-close" aria-label="Close preview">&times;</button>
-    <div class="shop-slides" id="shop-slides" role="region" aria-live="polite"></div>
+  <!-- SHOP PREVIEW -->
+  <div id="shop-preview" class="shop-preview">
+    <span class="close" onclick="closeShopPreview()">&times;</span>
+    <div class="shop-slides" id="shop-slides"></div>
   </div>
 
-  <!-- PARTNERS -->
-  <section id="partner" class="section">
-    <h2>Brands We Trust</h2>
+  <!-- BRANDS -->
+  <section id="partner">
+    <h2>Brand We Trust</h2>
     <div class="partner-box">
       <img src="image/partner1.jpg" alt="Partner 1">
       <img src="image/partner2.jpg" alt="Partner 2">
@@ -76,8 +76,11 @@
     </div>
   </section>
 
-  <!-- CONTACT BUTTON (bottom right fixed) -->
-  <a href="LINK-KAT-SINI" id="contact-btn" class="contact-btn" target="_blank" rel="noopener">Contact Us</a>
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <a href="LINK-KAT-SINI" target="_blank" class="contact-btn">Contact Us</a>
+  </section>
 
   <script src="script.js"></script>
 </body>
