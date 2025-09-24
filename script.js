@@ -26,3 +26,18 @@ const menuLightbox = document.getElementById("menu-lightbox");
 menuTrigger.addEventListener("click", ()=> {
   menuLightbox.classList.toggle("active");
 });
+
+// SCROLL REVEAL
+const faders = document.querySelectorAll(".fade-section");
+
+function revealOnScroll() {
+  const triggerBottom = window.innerHeight * 0.85;
+  faders.forEach(sec => {
+    const secTop = sec.getBoundingClientRect().top;
+    if (secTop < triggerBottom) {
+      sec.classList.add("show");
+    }
+  });
+}
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
