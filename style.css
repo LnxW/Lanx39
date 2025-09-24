@@ -1,6 +1,6 @@
 /* RESET */
 * {margin:0; padding:0; box-sizing:border-box;}
-body {font-family: Arial, sans-serif; background:#111; color:#fff;}
+body {font-family: Arial, sans-serif; background:#111; color:#fff; scroll-behavior:smooth;}
 
 /* HEADER */
 header {
@@ -28,7 +28,7 @@ header {
 .hero {
   position:relative; height:100vh;
   display:flex; align-items:center; justify-content:center; text-align:center;
-  background-attachment: fixed; /* gambar fixed bila scroll */
+  background-attachment: fixed;
 }
 .hero-bg {
   position:absolute; top:0; left:0; width:100%; height:100%;
@@ -42,6 +42,7 @@ header {
 }
 
 /* FADE SECTION */
+section {padding:100px 30px; text-align:center;}
 .fade-section {
   opacity:0;
   transform: translateY(50px);
@@ -61,13 +62,20 @@ header {
   border-radius:0 0 10px 10px; font-size:14px;
 }
 
+/* SHOP PREVIEW */
+.shop-preview {
+  position:fixed; top:0; left:0; width:100%; height:100%;
+  background:rgba(0,0,0,0.95); display:none; justify-content:center; align-items:center;
+  flex-direction:column; z-index:2000;
+}
+.shop-preview.active {display:flex;}
+.shop-preview .close {
+  position:absolute; top:20px; right:30px; font-size:40px; cursor:pointer;
+}
+.shop-slides img {max-width:90%; margin:10px; border-radius:10px;}
+
 /* PARTNER */
-.sponsor-box {
-  margin-top:20px; width:200px; overflow:hidden;
-  animation:moveSponsor 8s linear infinite;
-}
+.sub {font-size:0.8em; font-weight:300; margin-left:10px;}
+.sponsor-box {margin-top:20px; width:200px; overflow:hidden; animation:moveSponsor 8s linear infinite;}
 .sponsor-box img {width:100%;}
-@keyframes moveSponsor {
-  from {transform:translateX(-100%);}
-  to {transform:translateX(100%);}
-}
+@keyframes moveSponsor {from {transform:translateX(-100%);} to {transform:translateX(100%);}}
