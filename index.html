@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lanx</title>
+  <title>Lanx39</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,18 +19,18 @@
     <a href="#hero">Home</a>
     <a href="#about">About</a>
     <a href="#shop">Shop</a>
-    <a href="#partners">Partners</a>
+    <a href="#partner">Partners</a>
     <a href="#contact">Contact</a>
   </nav>
 
-<!-- HERO -->
-<section class="hero" id="hero">
-  <div class="hero-bg" id="hero-bg"></div>
-  <div class="hero-text">
-    <h1 id="hero-caption">Second or never.</h1>
-    <button class="hero-btn">Shop Now</button>
-  </div>
-</section>
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg active" id="hero-bg"></div>
+    <div class="hero-text">
+      <h1 id="hero-caption">Second or never.</h1>
+      <button class="hero-btn" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Shop Now</button>
+    </div>
+  </section>
 
   <!-- ABOUT -->
   <section id="about">
@@ -41,39 +41,44 @@
   <!-- SHOP -->
   <section id="shop">
     <h2>Shop</h2>
-  <div class="shop-grid">
-  <div class="shop-item" onclick="openShopPreview(0)">
-    <img src="image/shop1.jpg" alt="Black Velocity Hoodie">
-    <div class="overlay">Black Velocity Hoodie</div>
+    <div class="shop-grid">
+      <div class="shop-item" onclick="openShopPreview(0)">
+        <img src="image/shop1.jpg" alt="Black Velocity Hoodie">
+        <div class="overlay">Black Velocity Hoodie</div>
+      </div>
+      <div class="shop-item" onclick="openShopPreview(1)">
+        <img src="image/shop2.jpg" alt="Saturation Tee">
+        <div class="overlay">Saturation Tee</div>
+      </div>
+      <div class="shop-item" onclick="openShopPreview(2)">
+        <img src="image/shop3.jpg" alt="Rising Polo">
+        <div class="overlay">Rising Polo</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOP PREVIEW -->
+  <div id="shop-preview" class="shop-preview">
+    <span class="close" onclick="closeShopPreview()">&times;</span>
+    <div class="shop-slides" id="shop-slides"></div>
   </div>
 
-  <div class="shop-item" onclick="openShopPreview(1)">
-    <img src="image/shop2.jpg" alt="Saturation Tee">
-    <div class="overlay">Saturation Tee</div>
-  </div>
+  <!-- PARTNER -->
+  <section id="partner">
+    <h2>Brand We Trust</h2>
+    <div class="partner-box">
+      <img src="image/partner1.jpg" alt="Partner 1">
+      <img src="image/partner2.jpg" alt="Partner 2">
+      <img src="image/partner3.jpg" alt="Partner 3">
+      <img src="image/partner4.jpg" alt="Partner 4">
+    </div>
+  </section>
 
-  <div class="shop-item" onclick="openShopPreview(2)">
-    <img src="image/shop3.jpg" alt="Rising Polo">
-    <div class="overlay">Rising Polo</div>
-  </div>
-</div>
+  <!-- CONTACT -->
+  <section id="contact">
+    <a href="LINK-KAT-SINI" target="_blank" class="contact-btn">Contact Us</a>
+  </section>
 
-<!-- SHOP PREVIEW OVERLAY -->
-<div id="shop-preview" class="shop-preview">
-  <span class="close" onclick="closeShopPreview()">&times;</span>
-  <div class="shop-slides" id="shop-slides"></div>
-</div>
-
-  <!-- BRANDS -->
-<section id="partner">
-  <h2>Brand We Trust</h2>
-  <div class="partner-box">
-    <img src="image/partner1.jpg" alt="Partner 1">
-    <img src="image/partner2.jpg" alt="Partner 2">
-    <img src="image/partner3.jpg" alt="Partner 3">
-    <img src="image/partner4.jpg" alt="Partner 4">
-  </div>
-</section>
-
-     <!-- CONTACT US BUTTON -->
-<a href="LINK-KAT-SINI" target="_blank" id="contact-btn">Contact Us</a>
+  <script src="script.js"></script>
+</body>
+</html>
