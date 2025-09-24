@@ -1,7 +1,17 @@
 // MENU
 const menuToggle = document.getElementById("menu-toggle");
 const menuOverlay = document.getElementById("menu-overlay");
-menuToggle.addEventListener("click", ()=> menuOverlay.classList.toggle("active"));
+
+menuToggle.addEventListener("click", () => {
+  menuOverlay.classList.toggle("active");
+});
+
+// Close menu bila klik link
+document.querySelectorAll(".menu-overlay a").forEach(link => {
+  link.addEventListener("click", () => {
+    menuOverlay.classList.remove("active");
+  });
+});
 
 // HERO SLIDES
 const slides = document.querySelectorAll(".hero-slide");
