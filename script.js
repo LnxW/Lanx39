@@ -43,37 +43,24 @@ setInterval(showHero, 4000);
 
 // SHOP PREVIEW
 const shopPreview = document.getElementById("shop-preview");
-const shopPreviewImg = document.getElementById("shop-preview-img");
-const shopPreviewText = document.getElementById("shop-preview-text");
-const shopItems = [
-  {img:"image/shop1.jpg",text:"Red Motion Tee"},
-  {img:"image/shop2.jpg",text:"Black Velocity Hoodie"},
-  {img:"image/shop3.jpg",text:"Grey Speed Cap"}
+const shopSlides = document.getElementById("shop-slides");
+
+// List product images
+const shopProducts = [
+  ["image/shop1_a.jpg", "image/shop1_b.jpg", "image/shop1_c.jpg"], // product 1
+  ["image/shop2_a.jpg", "image/shop2_b.jpg"]                       // product 2
 ];
+
 function openShopPreview(index){
-  shopPreviewImg.src = shopItems[index].img;
-  shopPreviewText.textContent = shopItems[index].text;
-  shopPreview.classList.add("active");
-}
-function closeShopPreview(){ shopPreview.classList.remove("active"); }
-
-function openShopPreview(){
-  shopPreview.classList.add("active");
-
-  // bagi effect fade + scale
-  const imgs = shopPreview.querySelectorAll("img");
-  imgs.forEach((img, i) => {
-    setTimeout(() => {
-      img.classList.add("active");
-    }, i * 100); // delay sikit kalau banyak gambar
+  shopSlides.innerHTML = ""; // clear dulu
+  shopProducts[index].forEach(src => {
+    let img = document.createElement("img");
+    img.src = src;
+    shopSlides.appendChild(img);
   });
+  shopPreview.classList.add("active");
 }
 
 function closeShopPreview(){
   shopPreview.classList.remove("active");
-
-  // reset effect bila close
-  const imgs = shopPreview.querySelectorAll("img");
-  imgs.forEach(img => img.classList.remove("active"));
 }
-
