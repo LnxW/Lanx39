@@ -1,14 +1,15 @@
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:Arial, sans-serif; background:#111; color:#fff;}
+body{font-family:Arial,sans-serif;background:#111;color:#fff;}
 
 /* HEADER */
 header{
   position:fixed;top:0;left:0;width:100%;
   display:flex;justify-content:space-between;align-items:center;
   padding:15px 30px;
-  background:rgba(0,0,0,0.6);color:#fff;z-index:1000;
+  background:rgba(0,0,0,0.6);
+  z-index:1000;
 }
-.logo{font-weight:bold;font-size:20px;}
+.logo{font-weight:bold;font-size:22px;}
 .menu-toggle{font-size:24px;cursor:pointer;}
 
 /* MENU OVERLAY */
@@ -22,7 +23,7 @@ header{
 .menu-overlay a{color:#fff;font-size:24px;margin:10px 0;text-decoration:none;}
 
 /* HERO */
-.hero{height:100vh;position:relative;text-align:center;overflow:hidden;}
+.hero{height:100vh;position:relative;overflow:hidden;text-align:center;}
 .hero-bg{
   position:absolute;top:0;left:0;width:100%;height:100%;
   background-size:cover;background-position:center;
@@ -30,30 +31,25 @@ header{
 }
 .hero-bg.show{opacity:1;}
 .hero-text{position:relative;top:50%;transform:translateY(-50%);}
-.hero-text h1{font-size:48px;text-shadow:0 0 20px rgba(0,0,0,0.6);}
+.hero-text h1{font-size:48px;text-shadow:0 0 15px rgba(0,0,0,0.6);}
 .hero-btn{
-  margin-top:20px;padding:12px 28px;
-  border:none;border-radius:25px;background:red;color:#fff;
-  font-weight:bold;cursor:pointer;
+  margin-top:20px;padding:12px 30px;border:none;border-radius:25px;
+  background:red;color:#fff;font-weight:bold;cursor:pointer;
 }
 
-/* SECTIONS */
-section{padding:80px 20px;text-align:center;}
-h2{margin-bottom:20px;}
-
 /* SHOP */
+section{padding:80px 20px;text-align:center;}
+h2{margin-bottom:20px;font-size:28px;}
 .shop-grid{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;}
 .shop-item{position:relative;cursor:pointer;}
 .shop-item img{width:220px;border-radius:8px;}
-.overlay{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.7);color:#fff;padding:5px;border-radius:0 0 8px 8px;}
+.overlay{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.7);
+  color:#fff;padding:5px;border-radius:0 0 8px 8px;font-size:14px;}
 
-/* SHOP PREVIEW */
-.shop-preview{display:none;position:fixed;top:0;left:0;width:100%;height:100%;
-  background:rgba(0,0,0,0.9);justify-content:center;align-items:center;z-index:2000;}
-.shop-preview.active{display:flex;}
-.shop-slides img{max-width:90%;max-height:80vh;margin:10px;}
-.shop-preview .close{position:absolute;top:20px;right:30px;font-size:40px;cursor:pointer;color:#fff;}
-
-/* PARTNERS */
-.partner-box{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;background:#222;padding:20px;border-radius:10px;}
-.partner-box img{max-height:50px;width:auto;}
+/* BRANDS */
+.partner-box{
+  display:flex;justify-content:center;align-items:center;
+  flex-wrap:wrap;gap:40px;background:#222;padding:20px;border-radius:10px;
+}
+.partner-box img{max-height:60px;width:auto;filter:grayscale(100%);transition:0.3s;}
+.partner-box img:hover{filter:none;transform:scale(1.05);}
