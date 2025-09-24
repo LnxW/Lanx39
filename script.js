@@ -1,31 +1,90 @@
-// HERO SLIDE
-const heroBg = document.getElementById("hero-bg");
-const heroCaption = document.getElementById("hero-caption");
-const heroSlides = [
-  {img:"image/hero1.jpg", text:"Second or never."},
-  {img:"image/hero2.jpg", text:"I see red."},
-  {img:"image/hero3.jpg", text:"Rising star."}
-];
-let heroIndex = 0;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LANX39</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-function showHero(){
-  heroBg.style.opacity = 0;
-  setTimeout(()=>{
-    heroBg.style.backgroundImage = `url('${heroSlides[heroIndex].img}')`;
-    heroCaption.textContent = heroSlides[heroIndex].text;
-    heroBg.style.opacity = 1;
-  },300);
-  heroIndex = (heroIndex+1)%heroSlides.length;
-}
-showHero();
-setInterval(showHero,4000);
+  <!-- HEADER -->
+  <header>
+    <div class="logo">LANX</div>
+    <div id="menu-toggle" class="menu-trigger">&#9776;</div>
+  </header>
 
-// MENU
-const menuToggle = document.getElementById("menu-toggle");
-const navOverlay = document.getElementById("nav-overlay");
-menuToggle.addEventListener("click",()=> navOverlay.classList.toggle("active"));
+  <!-- MENU OVERLAY -->
+  <div id="nav-overlay" class="menu-lightbox">
+    <a href="#hero">Home</a>
+    <a href="#about">About</a>
+    <a href="#shop">Shop</a>
+    <a href="#partner">Partner</a>
+    <a href="#contact">Contact</a>
+  </div>
 
-// SHOP PREVIEW
-const shopPreview = document.getElementById("shop-preview");
-function openShopPreview(index){shopPreview.classList.add("active");}
-function closeShopPreview(){shopPreview.classList.remove("active");}
+  <!-- HERO -->
+  <section id="hero" class="hero">
+    <img src="image/hero1.jpg" alt="Hero1" class="active">
+    <img src="image/hero2.jpg" alt="Hero2">
+    <img src="image/hero3.jpg" alt="Hero3">
+    <div class="hero-text">
+      <h1 id="hero-caption">Second or never.</h1>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About</h2>
+    <p>
+      LANX is a modern lifestyle and performance apparel brand designed for those who live life in motion. 
+      Blending sport functionality with streetwear aesthetics, our collection delivers ultimate comfort for daily wear 
+      while embracing the energy, speed, and dynamism of an active lifestyle. Every piece is crafted to move with you, 
+      whether you're chasing personal bests, navigating the city, or expressing your individual style, making LANX the 
+      perfect fusion of performance, style, and effortless wearability. Join the movement and share your journey with #LANX39.
+    </p>
+  </section>
+
+  <!-- SHOP -->
+  <section id="shop">
+    <h2>Shop</h2>
+    <div class="shop-container">
+      <div class="shop-box" onclick="openShopPreview()">
+        <img src="image/dropA1.jpg" alt="Drop A">
+        <div class="overlay">Sept 25 Drop</div>
+      </div>
+      <div class="shop-box" onclick="openShopPreview()">
+        <img src="image/dropA2.jpg" alt="Drop A 2">
+        <div class="overlay">Sept 25 Drop</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOP PREVIEW -->
+  <div id="shop-preview" class="shop-preview">
+    <span class="close" onclick="closeShopPreview()">&times;</span>
+    <div class="shop-slides">
+      <img src="image/dropA1.jpg" alt="Drop A Preview 1">
+      <img src="image/dropA2.jpg" alt="Drop A Preview 2">
+      <img src="image/dropA3.jpg" alt="Drop A Preview 3">
+    </div>
+  </div>
+
+  <!-- PARTNER -->
+  <section id="partner">
+    <h2>Our Partner <span class="sub">looking forward</span></h2>
+    <div class="sponsor-box">
+      <img src="image/sponsor1.png" alt="Sponsor">
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: info@lanx.com</p>
+    <p>Instagram: @lanx39</p>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
