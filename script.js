@@ -47,20 +47,23 @@ const shopSlides = document.getElementById("shop-slides");
 
 // List product images
 const shopProducts = [
-  ["image/shop1_a.jpg", "image/shop1_b.jpg", "image/shop1_c.jpg"], // product 1
-  ["image/shop2_a.jpg", "image/shop2_b.jpg"]                       // product 2
+  ["image/shop1_a.jpg", "image/shop1_b.jpg", "image/shop1_c.jpg"], // item 0
+  ["image/shop2_a.jpg", "image/shop2_b.jpg"],                      // item 1
+  ["image/shop3_a.jpg", "image/shop3_b.jpg", "image/shop3_c.jpg"]  // item 2
 ];
 
-function openShopPreview(index){
-  shopSlides.innerHTML = ""; // clear dulu
-  shopProducts[index].forEach(src => {
-    let img = document.createElement("img");
-    img.src = src;
-    shopSlides.appendChild(img);
+function openShopPreview(index) {
+  const slidesContainer = document.getElementById("shop-slides");
+  slidesContainer.innerHTML = ""; // reset
+  shopProducts[index].forEach(img => {
+    const image = document.createElement("img");
+    image.src = img;
+    slidesContainer.appendChild(image);
   });
-  shopPreview.classList.add("active");
+  document.getElementById("shop-preview").classList.add("active");
 }
 
-function closeShopPreview(){
-  shopPreview.classList.remove("active");
+function closeShopPreview() {
+  document.getElementById("shop-preview").classList.remove("active");
 }
+
