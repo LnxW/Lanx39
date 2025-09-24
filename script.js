@@ -25,3 +25,23 @@ function showSlide(){
 }
 showSlide();
 setInterval(showSlide,4000);
+
+// SHOP PREVIEW
+const shopProducts=[
+  ["image/shop1_a.jpg","image/shop1_b.jpg","image/shop1_c.jpg"],
+  ["image/shop2_a.jpg","image/shop2_b.jpg"],
+  ["image/shop3_a.jpg","image/shop3_b.jpg","image/shop3_c.jpg"]
+];
+function openShopPreview(i){
+  const container=document.getElementById("shop-slides");
+  container.innerHTML="";
+  shopProducts[i].forEach(src=>{
+    const img=document.createElement("img");
+    img.src=src;
+    container.appendChild(img);
+  });
+  document.getElementById("shop-preview").classList.add("active");
+}
+function closeShopPreview(){
+  document.getElementById("shop-preview").classList.remove("active");
+}
