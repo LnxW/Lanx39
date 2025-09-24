@@ -1,48 +1,27 @@
-// MENU
-const menuToggle = document.getElementById("menu-toggle");
-const menuOverlay = document.getElementById("menu-overlay");
-menuToggle.addEventListener("click", () => {
-  menuOverlay.classList.toggle("active");
-});
-document.querySelectorAll(".menu-overlay a").forEach(link=>{
-  link.addEventListener("click",()=>menuOverlay.classList.remove("active"));
+// MENU TOGGLE
+const menuToggle=document.getElementById("menu-toggle");
+const menuOverlay=document.getElementById("menu-overlay");
+menuToggle.addEventListener("click",()=>menuOverlay.classList.toggle("active"));
+document.querySelectorAll(".menu-overlay a").forEach(a=>{
+  a.addEventListener("click",()=>menuOverlay.classList.remove("active"));
 });
 
-// HERO SLIDES
+// HERO SLIDESHOW
 const heroBg=document.getElementById("hero-bg");
 const heroCaption=document.getElementById("hero-caption");
-const heroSlides=[
+const slides=[
   {img:"image/hero1.jpg",text:"Second or never."},
   {img:"image/hero2a.jpg",text:"I see <span style='color:red'>red</span>."},
   {img:"image/hero3.jpg",text:"Rising star."}
 ];
-let heroIndex=0;
-function showHero(){
-  heroBg.style.backgroundImage=`url(${heroSlides[heroIndex].img})`;
-  heroCaption.innerHTML=heroSlides[heroIndex].text;
+let index=0;
+function showSlide(){
+  heroBg.style.backgroundImage=`url(${slides[index].img})`;
+  heroCaption.innerHTML=slides[index].text;
   heroBg.classList.remove("show");
-  void heroBg.offsetWidth; // reset animation
+  void heroBg.offsetWidth;
   heroBg.classList.add("show");
-  heroIndex=(heroIndex+1)%heroSlides.length;
+  index=(index+1)%slides.length;
 }
-showHero();
-setInterval(showHero,4000);
-
-// SHOP PREVIEW
-const shopProducts=[
-  ["image/shop1_a.jpg","image/shop1_b.jpg","image/shop1_c.jpg"],
-  ["image/shop2_a.jpg","image/shop2_b.jpg"],
-  ["image/shop3_a.jpg","image/shop3_b.jpg","image/shop3_c.jpg"]
-];
-function openShopPreview(i){
-  const slides=document.getElementById("shop-slides");
-  slides.innerHTML="";
-  shopProducts[i].forEach(src=>{
-    const img=document.createElement("img");
-    img.src=src;slides.appendChild(img);
-  });
-  document.getElementById("shop-preview").classList.add("active");
-}
-function closeShopPreview(){
-  document.getElementById("shop-preview").classList.remove("active");
-}
+showSlide();
+setInterval(showSlide,4000);
