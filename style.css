@@ -72,11 +72,11 @@ section{padding:100px 30px;text-align:center;}
 .shop-preview .close{position:absolute;top:20px;right:30px;font-size:40px;cursor:pointer;}
 .shop-slides img {
   max-width: 80%;
-  max-height: 80vh;   /* hadkan tinggi gambar ikut viewport */
+  max-height: 80vh;   /* limit tinggi gambar ikut screen */
   border-radius: 8px;
   margin-bottom: 10px;
-  object-fit: contain; /* maintain ratio asal */
-  opacity: 0;          /* untuk effect */
+  object-fit: contain; /* maintain ratio, tak stretch */
+  opacity: 0;
   transform: scale(0.95);
   transition: opacity 0.4s ease, transform 0.4s ease;
 }
