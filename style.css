@@ -83,27 +83,38 @@ button{padding:10px;border:none;background:red;color:#fff;font-weight:bold;curso
 body { overflow-x: hidden; }
 
 /* partner marquee */
-#partner .partner-wrap {
+#partner {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.partner-wrap {
   overflow: hidden;
   width: 100%;
-  margin-top: 20px;
 }
 
-.partner-wrap { overflow:hidden; width:100%; }
 .partner-track {
-  display:flex;
-  gap: 40px;
-  animation: scroll 20s linear infinite;
+  display: flex;
+  width: max-content;
+  gap: 50px;
+  animation: scroll 25s linear infinite;
 }
+
 .partner-track img {
   flex: 0 0 auto;
-  height: 80px; /* cocok */
-}
-@keyframes scroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  height: 60px; /* mobile */
 }
 
+@media (min-width: 768px) {
+  .partner-track img {
+    height: 100px; /* PC biar besar sikit */
+  }
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
 }
 
 #partner .partner-track img {
