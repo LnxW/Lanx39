@@ -29,7 +29,8 @@ header{position:fixed;top:0;left:0;width:100%;display:flex;justify-content:space
   text-align: center;
   overflow: hidden;
 }
-.hero-bg {
+
+#hero-bg {
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
@@ -39,10 +40,12 @@ header{position:fixed;top:0;left:0;width:100%;display:flex;justify-content:space
   transition: opacity 1s ease-in-out;
   z-index: -1;
 }
+
 .hero-text h1 {
   font-size: clamp(1.8rem, 4vw, 3rem);
   text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
   font-weight: 700;
+  color: #fff;
 }
 /* Background untuk hero */
 .hero-bg {
