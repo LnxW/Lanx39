@@ -35,20 +35,26 @@
   <section id="shop">
     <h2>Shop Collection</h2>
     <div class="shop-grid">
-      <div class="shop-item">
+      <div class="shop-item" onclick="openShopPreview(0)">
         <img src="image/shop1.jpg" alt="Black Velocity Hoodie">
         <div class="overlay">Black Velocity Hoodie</div>
       </div>
-      <div class="shop-item">
+      <div class="shop-item" onclick="openShopPreview(1)">
         <img src="image/shop2.jpg" alt="Saturation Tee">
         <div class="overlay">Saturation Tee</div>
       </div>
-      <div class="shop-item">
+      <div class="shop-item" onclick="openShopPreview(2)">
         <img src="image/shop3.jpg" alt="Rising Polo">
         <div class="overlay">Rising Polo</div>
       </div>
     </div>
   </section>
+
+  <!-- SHOP POPUP -->
+  <div id="shop-preview" class="shop-preview">
+    <span class="close" onclick="closeShopPreview()">&times;</span>
+    <div class="shop-slides" id="shop-slides"></div>
+  </div>
 
   <!-- BRANDS -->
   <section id="partner">
