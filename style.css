@@ -53,25 +53,27 @@ section{padding:100px 30px;text-align:center;}
 
 .partner-track {
   display: flex;
+  width: max-content;
   gap: 50px;
-  animation: scroll 20s linear infinite;
+  animation: scroll 25s linear infinite;
 }
 
 .partner-track img {
   flex: 0 0 auto;
-  height: 60px; /* mobile */
+  height: 60px; /* untuk mobile */
 }
 
 @media (min-width: 768px) {
   .partner-track img {
-    height: 100px; /* PC biar besar sikit */
+    height: 100px; /* untuk PC */
   }
 }
 
 @keyframes scroll {
   from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  to { transform: translateX(-100%); }
 }
+
 
 
 /* CONTACT */
