@@ -25,6 +25,12 @@ let heroIndex = 0;
 function showHero() {
   heroBg.style.backgroundImage = url(${heroSlides[heroIndex].img});
   heroCaption.innerHTML = heroSlides[heroIndex].text;
+
+  // fade effect
+  heroBg.classList.remove("show");
+  void heroBg.offsetWidth; // force reflow
+  heroBg.classList.add("show");
+
   heroIndex = (heroIndex + 1) % heroSlides.length;
 }
 
