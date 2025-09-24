@@ -14,15 +14,30 @@ document.querySelectorAll(".menu-overlay a").forEach(link => {
 });
 
 // HERO SLIDES
-const slides = document.querySelectorAll(".hero-slide");
-let current = 0;
-function showSlide(){
-  slides.forEach((s,i)=> s.classList.remove("active"));
-  slides[current].classList.add("active");
-  current = (current+1)%slides.length;
+// HERO SLIDES
+const heroBg = document.getElementById("hero-bg");
+const heroCaption = document.getElementById("hero-caption");
+
+const heroSlides = [
+  {img:"image/hero1.jpg", text:"Second or never."},
+  {img:"image/hero2.jpg", text:'I see <span class="red">red</span>.'},
+  {img:"image/hero3.jpg", text:"Rising star."}
+];
+
+let heroIndex = 0;
+
+function showHero(){
+  heroBg.style.backgroundImage = `url('${heroSlides[heroIndex].img}')`;
+  heroCaption.innerHTML = heroSlides[heroIndex].text; // guna innerHTML utk <span>
+  
+  heroCaption.style.opacity = 0;
+  setTimeout(()=> heroCaption.style.opacity = 1,500);
+  
+  heroIndex = (heroIndex+1) % heroSlides.length;
 }
-showSlide();
-setInterval(showSlide,4000);
+
+showHero();
+setInterval(showHero, 4000);
 
 // SHOP PREVIEW
 const shopPreview = document.getElementById("shop-preview");
