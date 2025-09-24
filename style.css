@@ -63,6 +63,51 @@ form{display:flex;flex-direction:column;gap:10px;max-width:400px;margin:20px aut
 input,textarea{padding:10px;border:none;border-radius:5px;}
 button{padding:10px;border:none;background:red;color:#fff;font-weight:bold;cursor:pointer;border-radius:5px;}
 
-body {
-  overflow-x: hidden; /* banish scroll kiri kanan */
+/* prevent horizontal scroll */
+body { overflow-x: hidden; }
+
+/* partner marquee */
+#partner .partner-wrap {
+  overflow: hidden;
+  width: 100%;
+  margin-top: 20px;
+}
+
+#partner .partner-track {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  /* duration: smaller = faster; tweak to taste */
+  animation: partnerScroll 18s linear infinite;
+  will-change: transform;
+}
+
+#partner .partner-track img {
+  height: 70px;        /* default (mobile / tablet) */
+  flex: 0 0 auto;
+  display: block;
+  opacity: 0.95;
+}
+
+/* pause on hover (nice UX) */
+#partner .partner-wrap:hover .partner-track {
+  animation-play-state: paused;
+}
+
+/* desktop bigger logos and faster */
+@media (min-width: 992px) {
+  #partner .partner-track img { height: 110px; }
+  #partner .partner-track { gap: 60px; animation-duration: 14s; }
+}
+
+/* small phones */
+@media (max-width: 420px) {
+  #partner .partner-track img { height: 48px; }
+  #partner .partner-track { gap: 20px; animation-duration: 22s; }
+}
+
+/* keyframes: translate by -50% because we duplicated the set */
+@keyframes partnerScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
