@@ -27,9 +27,13 @@ menuTrigger.addEventListener("click", ()=> {
   menuLightbox.classList.toggle("active");
 });
 
+// SHOP PREVIEW
+const shopPreview = document.getElementById("shop-preview");
+function openShopPreview(){shopPreview.classList.add("active");}
+function closeShopPreview(){shopPreview.classList.remove("active");}
+
 // SCROLL REVEAL
 const faders = document.querySelectorAll(".fade-section");
-
 function revealOnScroll() {
   const triggerBottom = window.innerHeight * 0.85;
   faders.forEach(sec => {
