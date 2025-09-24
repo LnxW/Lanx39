@@ -16,23 +16,19 @@ const heroCaption = document.getElementById("hero-caption");
 
 const heroSlides = [
   { img: "image/hero1.jpg", text: "Second or never." },
-  { img: "image/hero2.jpg", text: "I see <span style='color:red'>red</span>." },
+  { img: "image/hero2.jpg", text: "I see <span class='red'>red</span>." },
   { img: "image/hero3.jpg", text: "Rising star." }
 ];
 
 let heroIndex = 0;
 
 function showHero() {
-  // tukar background
   heroBg.style.backgroundImage = url(${heroSlides[heroIndex].img});
   heroBg.classList.remove("active");
-  void heroBg.offsetWidth; // restart transition
+  void heroBg.offsetWidth; // trick restart transition
   heroBg.classList.add("active");
 
-  // tukar text
   heroCaption.innerHTML = heroSlides[heroIndex].text;
-
-  // next
   heroIndex = (heroIndex + 1) % heroSlides.length;
 }
 
