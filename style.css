@@ -70,20 +70,20 @@ section{padding:100px 30px;text-align:center;}
 .shop-preview{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);display:none;justify-content:center;align-items:center;flex-direction:column;z-index:2000;}
 .shop-preview.active{display:flex;}
 .shop-preview .close{position:absolute;top:20px;right:30px;font-size:40px;cursor:pointer;}
-.shop-slides img {
-  max-width: 80%;
-  max-height: 80vh;   /* limit tinggi gambar ikut screen */
-  border-radius: 8px;
-  margin-bottom: 10px;
-  object-fit: contain; /* maintain ratio, tak stretch */
-  opacity: 0;
-  transform: scale(0.95);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+.shop-slides {
+  display: flex;
+  gap: 10px;
+  flex-wrap: nowrap;
+  overflow-x: auto; /* boleh scroll kiri kanan */
+  max-width: 90%;
 }
 
-.shop-slides img.active {
-  opacity: 1;
-  transform: scale(1);
+.shop-slides img {
+  max-height: 80vh;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
 }
 
 
