@@ -9,22 +9,28 @@ document.querySelectorAll(".menu-overlay a").forEach(a=>{
 // HERO SLIDESHOW
 const heroBg=document.getElementById("hero-bg");
 const heroCaption=document.getElementById("hero-caption");
-const slides=[
-  {img:"image/hero1.jpg",text:"Second or never."},
-  {img:"image/hero2a.jpg",text:"I see <span style='color:red'>red</span>."},
-  {img:"image/hero3.jpg",text:"Rising star."}
+const heroSlides = [
+  {img:"image/hero1.jpg", text:"Second or never."},
+  {img:"image/hero2.jpg", text:"I see <span class='red'>red</span>."},
+  {img:"image/hero3.jpg", text:"Rising star."}
 ];
-let index=0;
-function showSlide(){
-  heroBg.style.backgroundImage=`url(${slides[index].img})`;
-  heroCaption.innerHTML=slides[index].text;
-  heroBg.classList.remove("show");
-  void heroBg.offsetWidth;
-  heroBg.classList.add("show");
-  index=(index+1)%slides.length;
+
+let heroIndex = 0;
+
+function showHero(){
+  heroBg.style.backgroundImage = url(${heroSlides[heroIndex].img});
+
+  // fade transition
+  heroBg.classList.remove("active");
+  void heroBg.offsetWidth; // reset transition
+  heroBg.classList.add("active");
+
+  heroCaption.innerHTML = heroSlides[heroIndex].text;
+
+  heroIndex = (heroIndex + 1) % heroSlides.length;
 }
-showSlide();
-setInterval(showSlide,4000);
+showHero();
+setInterval(showHero, 4000);
 
 // SHOP PREVIEW
 const shopProducts=[
