@@ -51,27 +51,27 @@ section{padding:100px 30px;text-align:center;}
   width: 100%;
 }
 
-.partner-track {
+.partner-slider {
   display: flex;
-  width: max-content;
   gap: 50px;
-  animation: scroll 25s linear infinite;
+  animation: slidePartner 20s linear infinite;
+  width: max-content;
 }
 
-.partner-track img {
+.partner-slider img {
   flex: 0 0 auto;
-  height: 60px; /* untuk mobile */
+  height: 60px;
+}
+
+@keyframes slidePartner {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 @media (min-width: 768px) {
-  .partner-track img {
-    height: 100px; /* untuk PC */
+  .partner-slider img {
+    height: 100px;
   }
-}
-
-@keyframes scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-100%); }
 }
 
 
