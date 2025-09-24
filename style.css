@@ -46,33 +46,34 @@ section{padding:100px 30px;text-align:center;}
   text-align: center;
 }
 
-.partner-wrap {
+.partner-container {
   overflow: hidden;
   width: 100%;
 }
 
-.partner-slider {
+.partner-track {
   display: flex;
-  gap: 50px;
-  animation: slidePartner 20s linear infinite;
   width: max-content;
+  gap: 50px;
+  animation: scrollPartners 25s linear infinite;
 }
 
-.partner-slider img {
-  flex: 0 0 auto;
+.partner-track img {
   height: 60px;
-}
-
-@keyframes slidePartner {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  flex: 0 0 auto;
 }
 
 @media (min-width: 768px) {
-  .partner-slider img {
+  .partner-track img {
     height: 100px;
   }
 }
+
+@keyframes scrollPartners {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
 
 
 
