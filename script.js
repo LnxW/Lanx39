@@ -1,39 +1,35 @@
-// MENU TOGGLE
-const menuToggle=document.getElementById("menu-toggle");
-const menuOverlay=document.getElementById("menu-overlay");
-menuToggle.addEventListener("click",()=>menuOverlay.classList.toggle("active"));
-document.querySelectorAll(".menu-overlay a").forEach(a=>{
-  a.addEventListener("click",()=>menuOverlay.classList.remove("active"));
+// MENU
+const menuToggle = document.getElementById("menu-toggle");
+const menuOverlay = document.getElementById("menu-overlay");
+menuToggle.addEventListener("click", () => {
+  menuOverlay.classList.toggle("active");
 });
 
-// HERO SLIDESHOW
-const heroBg=document.getElementById("hero-bg");
-const heroCaption=document.getElementById("hero-caption");
+// HERO SLIDES
+const heroBg = document.getElementById("hero-bg");
+const heroCaption = document.getElementById("hero-caption");
+
 const heroSlides = [
-  {img:"image/hero1.jpg", text:"Second Or Never."},
-  {img:"image/hero2a.jpg", text:"I See <span class='RED'>red</span>."},
-  {img:"image/hero3.jpg", text:"Rising Star."}
+  {img:"image/hero1.jpg", text:"Second or never."},
+  {img:"image/hero2a.jpg", text:"I see <span style='color:red;'>red</span>."},
+  {img:"image/hero3.jpg", text:"Rising star."}
 ];
 
 let heroIndex = 0;
-
 function showHero(){
   heroBg.style.backgroundImage = url(${heroSlides[heroIndex].img});
-
-  // fade transition
   heroBg.classList.remove("active");
-  void heroBg.offsetWidth; // reset transition
+  void heroBg.offsetWidth; // force reflow
   heroBg.classList.add("active");
 
   heroCaption.innerHTML = heroSlides[heroIndex].text;
-
   heroIndex = (heroIndex + 1) % heroSlides.length;
 }
 showHero();
 setInterval(showHero, 4000);
 
 // SHOP PREVIEW
-cconst shopProducts = [
+const shopProducts = [
   ["image/shop1.jpg"], 
   ["image/shop2.jpg"], 
   ["image/shop3.jpg"]
