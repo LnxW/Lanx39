@@ -73,13 +73,21 @@ body { overflow-x: hidden; }
   margin-top: 20px;
 }
 
-#partner .partner-track {
-  display: flex;
-  align-items: center;
+.partner-wrap { overflow:hidden; width:100%; }
+.partner-track {
+  display:flex;
   gap: 40px;
-  /* duration: smaller = faster; tweak to taste */
-  animation: partnerScroll 18s linear infinite;
-  will-change: transform;
+  animation: scroll 20s linear infinite;
+}
+.partner-track img {
+  flex: 0 0 auto;
+  height: 80px; /* cocok */
+}
+@keyframes scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 }
 
 #partner .partner-track img {
