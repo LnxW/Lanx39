@@ -18,7 +18,7 @@ const heroBg = document.getElementById("hero-bg");
 const heroCaption = document.getElementById("hero-caption");
 
 const heroSlides = [
-  {img:"image/hero1.jpg", text:"Second or never."},
+  {img:"image/hero1.jpg", text:"Second or Never."},
   {img:"image/hero2a.jpg", text:'I see <span class="red">red</span>.'},
   {img:"image/hero3.jpg", text:"Rising star."}
 ];
