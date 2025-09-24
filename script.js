@@ -67,3 +67,26 @@ function closeShopPreview() {
   document.getElementById("shop-preview").classList.remove("active");
 }
 
+// Contact Modal
+const contactBtn = document.getElementById("contactBtn");
+const contactModal = document.getElementById("contactModal");
+const closeBtn = document.querySelector(".close");
+
+contactBtn.addEventListener("click", () => {
+  contactModal.style.display = "flex";
+});
+closeBtn.addEventListener("click", () => {
+  contactModal.style.display = "none";
+});
+window.addEventListener("click", (e) => {
+  if (e.target === contactModal) {
+    contactModal.style.display = "none";
+  }
+});
+
+// Dummy form action
+document.getElementById("contactForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+  alert("Message sent! (dummy mode)");
+  contactModal.style.display = "none";
+});
