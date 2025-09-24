@@ -51,7 +51,7 @@ header{position:fixed;top:0;left:0;width:100%;display:flex;justify-content:space
   font-size: clamp(1.5rem, 4vw, 3rem);
   font-weight: 700;
   color: #fff;
-  text-shadow: 0px 4px 20px rgba(0,0,0,0.2); /* 20% shadow */
+  text-shadow: 0px 4px 20px rgba(0,0,0,0.5); /* 50% shadow */
   transition: opacity 1s ease-in-out;
 }
 
