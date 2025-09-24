@@ -56,3 +56,24 @@ function openShopPreview(index){
   shopPreview.classList.add("active");
 }
 function closeShopPreview(){ shopPreview.classList.remove("active"); }
+
+function openShopPreview(){
+  shopPreview.classList.add("active");
+
+  // bagi effect fade + scale
+  const imgs = shopPreview.querySelectorAll("img");
+  imgs.forEach((img, i) => {
+    setTimeout(() => {
+      img.classList.add("active");
+    }, i * 100); // delay sikit kalau banyak gambar
+  });
+}
+
+function closeShopPreview(){
+  shopPreview.classList.remove("active");
+
+  // reset effect bila close
+  const imgs = shopPreview.querySelectorAll("img");
+  imgs.forEach(img => img.classList.remove("active"));
+}
+
