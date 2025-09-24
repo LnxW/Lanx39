@@ -16,6 +16,7 @@
   <!-- MENU OVERLAY -->
   <div id="menu-lightbox" class="menu-lightbox">
     <a href="#hero">Home</a>
+    <a href="#about">About</a>
     <a href="#shop">Shop</a>
     <a href="#partner">Partner</a>
     <a href="#contact">Contact</a>
@@ -29,18 +30,38 @@
     </div>
   </section>
 
+  <!-- ABOUT -->
+  <section id="about" class="fade-section hidden">
+    <h2>About</h2>
+    <p>
+      LANX is a modern lifestyle and performance apparel brand designed for those who live life in motion.
+      Blending sport functionality with streetwear aesthetics, our collection delivers ultimate comfort for
+      daily wear while embracing the energy, speed, and dynamism of an active lifestyle.
+    </p>
+  </section>
+
   <!-- SHOP -->
   <section id="shop" class="fade-section hidden">
     <h2>Shop</h2>
-    <div class="shop-box">
-      <img src="image/hero1.jpg" alt="item">
-      <div class="overlay">Product 1</div>
+    <div class="shop-box" onclick="openShopPreview()">
+      <img src="image/dropA1.jpg" alt="Drop A">
+      <div class="overlay">Sept 25 Drop</div>
     </div>
   </section>
 
+  <!-- SHOP PREVIEW -->
+  <div id="shop-preview" class="shop-preview">
+    <span class="close" onclick="closeShopPreview()">&times;</span>
+    <div class="shop-slides">
+      <img src="image/dropA1.jpg" alt="dropA1">
+      <img src="image/dropA2.jpg" alt="dropA2">
+      <img src="image/dropA3.jpg" alt="dropA3">
+    </div>
+  </div>
+
   <!-- PARTNER -->
   <section id="partner" class="fade-section hidden">
-    <h2>Our Partner</h2>
+    <h2>Our Partner <span class="sub">looking forward</span></h2>
     <div class="sponsor-box">
       <img src="image/hero2.jpg" alt="sponsor">
     </div>
