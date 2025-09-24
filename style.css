@@ -91,34 +91,35 @@ body { overflow-x: hidden; }
   text-align: center;
 }
 
-.partner-wrap {
-  overflow: hidden;
+.partner-wrapper {
   width: 100%;
+  overflow: hidden;
+  position: relative;
 }
 
 .partner-track {
   display: flex;
+  gap: 60px;
   width: max-content;
-  gap: 50px;
-  animation: scroll 25s linear infinite;
+  animation: moveLogos 20s linear infinite;
 }
 
 .partner-track img {
+  height: 60px;
   flex: 0 0 auto;
-  height: 60px; /* mobile */
 }
 
 @media (min-width: 768px) {
   .partner-track img {
-    height: 100px; /* PC biar besar sikit */
+    height: 100px;
   }
 }
 
-@keyframes scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+@keyframes moveLogos {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
-}
+
 
 #partner .partner-track img {
   height: 70px;        /* default (mobile / tablet) */
