@@ -14,7 +14,6 @@ document.querySelectorAll(".menu-overlay a").forEach(link => {
 });
 
 // HERO SLIDES
-// HERO SLIDES
 const heroBg = document.getElementById("hero-bg");
 const heroCaption = document.getElementById("hero-caption");
 
@@ -27,13 +26,16 @@ const heroSlides = [
 let heroIndex = 0;
 
 function showHero(){
-  heroBg.style.backgroundImage = `url('${heroSlides[heroIndex].img}')`;
-  heroCaption.innerHTML = heroSlides[heroIndex].text; // guna innerHTML utk <span>
-  
-  heroCaption.style.opacity = 0;
-  setTimeout(()=> heroCaption.style.opacity = 1,500);
-  
-  heroIndex = (heroIndex+1) % heroSlides.length;
+  heroBg.style.opacity = 0; // fade out
+  setTimeout(() => {
+    heroBg.style.backgroundImage = `url('${heroSlides[heroIndex].img}')`;
+    heroCaption.innerHTML = heroSlides[heroIndex].text;
+    heroBg.style.opacity = 1; // fade in
+    heroCaption.style.opacity = 0;
+    setTimeout(() => heroCaption.style.opacity = 1, 300);
+  }, 500);
+
+  heroIndex = (heroIndex + 1) % heroSlides.length;
 }
 
 showHero();
