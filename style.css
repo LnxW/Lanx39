@@ -25,7 +25,11 @@ header {
 .menu-lightbox a:hover {color:#f00;}
 
 /* HERO */
-.hero {position:relative; height:100vh; display:flex; align-items:center; justify-content:center; text-align:center;}
+.hero {
+  position:relative; height:100vh;
+  display:flex; align-items:center; justify-content:center; text-align:center;
+  background-attachment: fixed; /* gambar fixed bila scroll */
+}
 .hero-bg {
   position:absolute; top:0; left:0; width:100%; height:100%;
   background-size:cover; background-position:center;
@@ -37,3 +41,33 @@ header {
   text-shadow:2px 2px 20px rgba(0,0,0,0.8);
 }
 
+/* FADE SECTION */
+.fade-section {
+  opacity:0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-section.show {
+  opacity:1;
+  transform: translateY(0);
+}
+
+/* SHOP */
+.shop-box {position:relative; display:inline-block; width:250px; cursor:pointer;}
+.shop-box img {width:100%; border-radius:10px;}
+.shop-box .overlay {
+  position:absolute; bottom:0; left:0; right:0;
+  background:rgba(0,0,0,0.6); color:#fff; padding:10px;
+  border-radius:0 0 10px 10px; font-size:14px;
+}
+
+/* PARTNER */
+.sponsor-box {
+  margin-top:20px; width:200px; overflow:hidden;
+  animation:moveSponsor 8s linear infinite;
+}
+.sponsor-box img {width:100%;}
+@keyframes moveSponsor {
+  from {transform:translateX(-100%);}
+  to {transform:translateX(100%);}
+}
