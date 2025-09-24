@@ -35,14 +35,25 @@ section{padding:100px 30px;text-align:center;}
 .shop-slides img{max-width:80%;border-radius:8px;margin-bottom:10px;}
 
 /* PARTNER */
-.partner-slider{display:flex;gap:40px;overflow:hidden;animation:scroll 12s linear infinite;margin-top:20px;}
+.partner-slider {
+  display: flex;
+  gap: 40px;
+  animation: scrollLeft 15s linear infinite;
+}
+
 .partner-slider img {
   height: 60px;
+  flex-shrink: 0;
+}
+
+@keyframes scrollLeft {
+  from { transform: translateX(100%); }
+  to { transform: translateX(-100%); }
 }
 
 @media (min-width: 768px) {
   .partner-slider img {
-    height: 100px; /* lebih besar untuk PC */
+    height: 100px; /* Besar sikit untuk PC */
   }
 }
 
