@@ -15,24 +15,31 @@ const heroBg = document.getElementById("hero-bg");
 const heroCaption = document.getElementById("hero-caption");
 
 const heroSlides = [
-  {img:"image/hero1.jpg", text:"Second or never."},
-  {img:"image/hero2.jpg", text:"I see <span class='red'>red</span>."},
-  {img:"image/hero3.jpg", text:"Rising star."}
+  { img: "image/hero1.jpg", text: "Second or never." },
+  { img: "image/hero2.jpg", text: "I see <span style='color:red'>red</span>." },
+  { img: "image/hero3.jpg", text: "Rising star." }
 ];
+
 let heroIndex = 0;
 
-function showHero(){
-  heroBg.style.backgroundImage = url('${heroSlides[heroIndex].img}');
+function showHero() {
+  // tukar background
+  heroBg.style.backgroundImage = url(${heroSlides[heroIndex].img});
   heroBg.classList.remove("active");
-  void heroBg.offsetWidth; // reset transition
+  void heroBg.offsetWidth; // restart transition
   heroBg.classList.add("active");
 
+  // tukar text
   heroCaption.innerHTML = heroSlides[heroIndex].text;
+
+  // next
   heroIndex = (heroIndex + 1) % heroSlides.length;
 }
-showHero();
-setInterval(showHero, 4000);
 
+window.addEventListener("load", () => {
+  showHero();
+  setInterval(showHero, 4000);
+});
 // SHOP PREVIEW
 const shopProducts = [
   ["image/shop1_a.jpg", "image/shop1_b.jpg", "image/shop1_c.jpg"],
