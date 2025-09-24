@@ -14,13 +14,12 @@
     <div id="menu-toggle" class="menu-toggle">☰</div>
   </header>
 
-  <!-- MENU -->
+  <!-- NAV -->
   <nav id="menu-overlay" class="menu-overlay">
     <a href="#hero">Home</a>
-    <a href="#about">About</a>
     <a href="#shop">Shop</a>
-    <a href="#partner">Partners</a>
-    <a href="LINK-KAT-SINI" target="_blank">Contact</a>
+    <a href="#partner">Brands</a>
+    <a href="LINK-CONTACT" target="_blank">Contact</a>
   </nav>
 
   <!-- HERO -->
@@ -28,51 +27,37 @@
     <div class="hero-bg" id="hero-bg"></div>
     <div class="hero-text">
       <h1 id="hero-caption">Second or never.</h1>
-      <button class="hero-btn" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">
-        Shop Now
-      </button>
+      <button class="hero-btn" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Shop Now</button>
     </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <h2>About LANX39</h2>
-    <p>LANX39 delivers performance-inspired streetwear that blends comfort, speed, and lifestyle.</p>
   </section>
 
   <!-- SHOP -->
   <section id="shop">
-    <h2>Shop</h2>
+    <h2>Shop Collection</h2>
     <div class="shop-grid">
-      <div class="shop-item" onclick="openShopPreview(0)">
+      <div class="shop-item">
         <img src="image/shop1.jpg" alt="Black Velocity Hoodie">
         <div class="overlay">Black Velocity Hoodie</div>
       </div>
-      <div class="shop-item" onclick="openShopPreview(1)">
+      <div class="shop-item">
         <img src="image/shop2.jpg" alt="Saturation Tee">
         <div class="overlay">Saturation Tee</div>
       </div>
-      <div class="shop-item" onclick="openShopPreview(2)">
+      <div class="shop-item">
         <img src="image/shop3.jpg" alt="Rising Polo">
         <div class="overlay">Rising Polo</div>
       </div>
     </div>
   </section>
 
-  <!-- SHOP PREVIEW -->
-  <div id="shop-preview" class="shop-preview">
-    <span class="close" onclick="closeShopPreview()">&times;</span>
-    <div class="shop-slides" id="shop-slides"></div>
-  </div>
-
-  <!-- PARTNERS -->
+  <!-- BRANDS -->
   <section id="partner">
     <h2>Brands We Trust</h2>
     <div class="partner-box">
-      <img src="image/partner1.jpg" alt="Partner 1">
-      <img src="image/partner2.jpg" alt="Partner 2">
-      <img src="image/partner3.jpg" alt="Partner 3">
-      <img src="image/partner4.jpg" alt="Partner 4">
+      <img src="image/partner1.jpg" alt="Brand 1">
+      <img src="image/partner2.jpg" alt="Brand 2">
+      <img src="image/partner3.jpg" alt="Brand 3">
+      <img src="image/partner4.jpg" alt="Brand 4">
     </div>
   </section>
 
