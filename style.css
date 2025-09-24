@@ -36,11 +36,22 @@ section{padding:100px 30px;text-align:center;}
 
 /* PARTNER */
 .partner-slider{display:flex;gap:40px;overflow:hidden;animation:scroll 12s linear infinite;margin-top:20px;}
-.partner-slider img{height:60px;}
-@keyframes scroll{0%{transform:translateX(100%);}100%{transform:translateX(-100%);}}
+.partner-slider img {
+  height: 60px;
+}
+
+@media (min-width: 768px) {
+  .partner-slider img {
+    height: 100px; /* lebih besar untuk PC */
+  }
+}
+
 
 /* CONTACT */
 form{display:flex;flex-direction:column;gap:10px;max-width:400px;margin:20px auto;}
 input,textarea{padding:10px;border:none;border-radius:5px;}
 button{padding:10px;border:none;background:red;color:#fff;font-weight:bold;cursor:pointer;border-radius:5px;}
 
+body {
+  overflow-x: hidden; /* banish scroll kiri kanan */
+}
